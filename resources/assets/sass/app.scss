@@ -1,0 +1,66 @@
+// Plugins
+@import "bootstrap/scss/bootstrap";
+@import "element-plus/dist/index.css";
+
+// Own Styles
+@import 'variables';
+
+body {
+    background-color: #dfe9f0;
+}
+
+input {
+    width: 100%;
+}
+
+.de-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 25px;
+
+    &__form {
+        position: relative;
+        max-width: 450px;
+        width: 400px;
+        background-color: $light-bg;
+        color: $light-text;
+        padding: 25px 35px;
+        border-radius: $border-radius;
+        box-shadow: 0 0 10px rgba($color: $dark-bg, $alpha: 0.125);
+        
+        &--title {
+            text-align: center;
+            color: $dark-color;
+            font-weight: 700;
+            line-height: 40px;
+            margin-bottom: 15px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 40px;
+                background-color: $primary-color;
+                left: 0;
+            }
+        }
+
+        &--info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        &--message {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+    }
+}
