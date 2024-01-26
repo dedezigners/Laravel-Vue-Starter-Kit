@@ -1,5 +1,5 @@
 <template>
-    <div class="de-auth">
+    <guest-layout>
         <el-form class="de-auth__form" label-position="top">
             <h3 class="de-auth__form--title">Forgot Password?</h3>
             <el-form-item label="Username or Email Address" :error="errors['identity'] ? errors['identity'][0] : null">
@@ -13,7 +13,7 @@
             <el-button type="default" @click="onSubmit">Reset Password Link</el-button>
             <p class="de-auth__form--message"><Link href="/login">Back to Login?</Link></p>
         </el-form>
-    </div>
+    </guest-layout>
 </template>
 
 <script lang="ts">

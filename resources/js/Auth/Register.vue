@@ -1,5 +1,5 @@
 <template>
-    <div class="de-auth">
+    <guest-layout>
         <el-form class="de-auth__form" label-position="top">
             <h3 class="de-auth__form--title">Register</h3>
             <el-form-item label="Your Name" :error="errors['name'] ? errors['name'][0] : null">
@@ -27,7 +27,7 @@
             <el-button type="default" @click="onSubmit">Register</el-button>
             <p class="de-auth__form--message">Already have an account? <Link href="/login">Login Here</Link></p>
         </el-form>
-    </div>
+    </guest-layout>
 </template>
 
 <script lang="ts">

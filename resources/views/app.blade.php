@@ -14,8 +14,7 @@
         @routes
         @vite([
             "resources/js/app.ts",
-            "resources/js/{$page['component']}.vue",
-            "resources/assets/sass/app.scss",
+            "resources/js/{$page['component']}.vue"
         ])
         @inertiaHead
     </head>

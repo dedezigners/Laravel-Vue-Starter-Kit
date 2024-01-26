@@ -1,16 +1,8 @@
-// Plugins
-@import "bootstrap/scss/bootstrap";
-@import "element-plus/dist/index.css";
-
 // Own Styles
 @import 'variables';
 
 body {
-    background-color: #dfe9f0;
-}
-
-input {
-    width: 100%;
+    background-color: #e7ebf2 !important;
 }
 
 .de-auth {
