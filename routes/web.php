@@ -27,8 +27,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [FrontendController::class, 'getIndex']);
-
+Route::get('/', [FrontendController::class, 'index']);
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -43,6 +42,5 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::any('logout', [AuthController::class, 'destroy'])->name('logout');
-    Route::get('dashboard', [FrontendController::class, 'getDashboard'])->name('dashboard');
-    
+    Route::get('dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
 });

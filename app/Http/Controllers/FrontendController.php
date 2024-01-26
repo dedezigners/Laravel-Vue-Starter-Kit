@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 class FrontendController extends Controller
 {
-    public function getIndex()
+    public function index()
     {
         return Inertia::render('App/Home');
     }
