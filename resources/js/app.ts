@@ -5,7 +5,8 @@ import { Link, createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import ElementPlus from 'element-plus';
-
+import { createPinia } from "pinia";
+import { Tooltip } from "bootstrap";
 // Layouts
 import GuestLayout from '@/layouts/GuestLayout.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
@@ -26,8 +27,13 @@ createInertiaApp({
         .component('Link', Link);
         
         app.use(plugin)
+        .use(createPinia())
         .use(ZiggyVue)
         .use(ElementPlus);
+
+        app.directive("tooltip", (el) => {
+            new Tooltip(el);
+        });
         
         app.mount(el);
     }

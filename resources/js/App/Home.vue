@@ -1,12 +1,12 @@
 <template>
-    <h1>Frontend Template Page will be here!</h1>
+    <app-layout>
+        <h2>Home Page</h2>
+    </app-layout>
 </template>
 
 <script lang="ts">
 export default {
-    name: "App",
-    setup: () => {
-        console.log('Frontend template page!');
-    }
+    name: "Home",
+    setup: () => {}
 }
 </script>

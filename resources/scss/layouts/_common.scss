@@ -1,0 +1,139 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: $font-family;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    background-color: $bg-color;
+    color: $text-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $primary-color;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+h5 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h6 {
+    font-size: 10px;
+    line-height: 14px;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+a,
+button {
+    color: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+a,
+button,
+img,
+input,
+span {
+    transition: all 0.3s ease 0s;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+a:focus {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+label {
+    color: $heading-color;
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+figure {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+// input::-webkit-input-placeholder,
+// input::-ms-input-placeholder,
+// input::-moz-input-placeholder,
+input::placeholder {
+    font-size: 12px;
+    font-weight: 300;
+    color: $light-text !important;
+    opacity: 0.85 !important;
+}

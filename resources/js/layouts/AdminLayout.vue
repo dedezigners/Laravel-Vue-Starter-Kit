@@ -1,18 +1,16 @@
 <template>
-    <slot></slot>
+    <div class="de-admin">
+        <div class="de-admin__header">
+            <div class="container"></div>
+        </div>
+        <slot></slot>
+    </div>
 </template>
 
 <script lang="ts">
 export default {
     name: "Admin",
+    components: {},
     setup: () => {}
 }
 </script>
-
-<style lang="scss">
-// Plugins
-@import "bootstrap/scss/bootstrap";
-@import "element-plus/dist/index.css";
-// DeStyles
-@import '../assets/sass/admin.scss';
-</style>
