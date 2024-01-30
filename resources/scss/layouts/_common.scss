@@ -16,6 +16,10 @@ body {
     font-weight: 400;
     background-color: $bg-color;
     color: $text-color;
+
+    @media ($desktop-screen) {
+        font-size: 14px;
+    }
 }
 
 h1,

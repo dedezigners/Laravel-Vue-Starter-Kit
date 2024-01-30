@@ -11,7 +11,7 @@ $white: #ffffff;
 $black: #000000;
 
 $dark-color: #1e1c1c;
-$light-color: #ebe4e4;
+$light-color: #efefef;
 
 $heading-color: $dark-color;
 $text-color: #3e4045;
@@ -20,6 +20,11 @@ $light-text: #7c7b85;
 $border-radius: 5px;
 $sidebar-color: #101013;
 
+$padding-x: 12px;
+$padding-y: 20px;
+
 $desktop-sidebar-width: 270px;
 $mobile-sidebar-width: 240px;
+$desktop-header-height: 60px;
+
 $desktop-screen: 'min-width: 992px';

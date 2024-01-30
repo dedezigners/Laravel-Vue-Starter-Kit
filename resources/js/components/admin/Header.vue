@@ -2,10 +2,10 @@
     <div class="de-header">
         <div class="container-fluid">
             <div class="de-header--content">
-                <button class="btn btn-icon" @click="$emit('show-sidebar')">
+                <button class="btn btn-icon d-lg-none" @click="$emit('show-sidebar')">
                     <font-awesome-icon icon="bars" />
                 </button>
-                <div class="de-header--brand">
+                <div class="de-header--brand d-lg-none">
                     <img class="de-header--brand-image" src="/assets/images/logo/dede.svg" alt="DeDe">
                 </div>
                 <ul class="de-header--list">

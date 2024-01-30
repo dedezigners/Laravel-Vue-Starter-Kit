@@ -3,15 +3,13 @@
         <div :class="showSidebar ? 'de-admin--overlay' : ''" @click.self="showSidebar = false"></div>
         <DeHeader @show-sidebar="showSidebar = true" />
 
-        <div class="de-wrapper">
+        <div class="de-admin__wrapper">
             <DeSidebar :show="showSidebar" />
             
-            <div class="de-main">
+            <div class="de-admin__main">
                 <DeBreadcrumb />
-                <div class="de-content">
-                    <div class="container-fluid">
-                        <slot></slot>
-                    </div>
+                <div class="de-admin__content">
+                    <slot></slot>
                 </div>
                 <DeFooter />
             </div>

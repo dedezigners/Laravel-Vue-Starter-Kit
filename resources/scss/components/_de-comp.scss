@@ -3,7 +3,8 @@
     height: 40px;
     border: 2px solid $white;
     border-radius: 100%;
-    box-shadow: 0 0 10px rgba($color: $dark-color, $alpha: 0.625);
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.45);
 
     &--image {
         width: auto;
@@ -28,12 +29,36 @@
 
 .de-brand {
     max-height: 34px;
+    cursor: pointer;
 
     &__logo {
         max-height: 34px;
+    }
+}
 
-        // &--desktop {
-        //     display: none;
-        // }
+.de-breadcrumb {
+    padding: $padding-x $padding-y;
+    
+    &--title {
+        margin-bottom: 5px;
+        color: $black;
+    }
+
+    &--item {
+        margin-right: 8px;
+
+        &::after {
+            content: '-';
+            margin-left: 8px;
+        }
+
+        &:last-child {
+            margin-right: 0;
+
+            &::after {
+                content: '';
+                margin-left: 0;
+            }
+        }
     }
 }

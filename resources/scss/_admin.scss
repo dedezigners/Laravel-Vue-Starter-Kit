@@ -11,7 +11,22 @@
         height: 100vh;
     }
 
+    &__main {
+        display: flex;
+        flex-direction: column;
+        
+        @media ($desktop-screen) {
+            margin-left: $desktop-sidebar-width;
+        }
+    }
+
+    &__content {
+        padding: $padding-x $padding-y;
+        flex-grow: 1;
+    }
+
     // Components
     @import 'components/admin/header';
     @import 'components/admin/sidebar';
+    @import 'components/admin/footer';
 }
