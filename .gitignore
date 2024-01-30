@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 /_template
 /__template
+.DS_Store

@@ -1,0 +1,110 @@
+.de-sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: $mobile-sidebar-width;
+    height: 100vh;
+    background-color: $sidebar-color;
+    z-index: 3;
+    top: 0;
+    left: -$mobile-sidebar-width;
+    transition: all 0.3s ease-in-out;
+
+    @media ($desktop-screen) {
+        width: $desktop-sidebar-width;
+        left: 0;
+    }
+
+    &.active {
+        left: 0;
+    }
+
+    &__header {
+        padding: 10px 12px;
+    }
+
+    &__content {
+        padding: 10px 12px;
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+
+        &--heading {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin: 8px 0;
+        }
+
+        &--item {
+            color: $light-text;
+
+            .item {
+                display: flex;
+                align-items: center;
+                padding: 8px 12px;
+                border-radius: $border-radius;
+                text-decoration: none;
+                cursor: pointer;
+                user-select: none;
+
+                &:hover {
+                    color: $white;
+                }
+
+                &.active {
+                    color: $white;
+                    background-color: rgba($color: $white, $alpha: 0.05);
+                }
+
+                &.has-children {
+                    &--active {
+                        .item--arrow {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                &--icon {
+                    transition: all 0.2s ease-in-out;
+                    display: inline-block;
+                    margin-right: 8px;
+                }
+
+                &--text {
+                    transition: all 0.2s ease-in-out;
+                    display: flex;
+                    flex-grow: 1;
+                }
+                
+                &--arrow {
+                    transition: all 0.2s ease-in-out;
+                    page-break-after: always;
+                    break-after: always;
+                }
+            }
+
+            .sub-menu {
+                flex-direction: column;
+                margin-left: 12px;
+                display: none;
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+
+                &.show {
+                    display: flex;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    
+    &__footer {
+        // margin-top: auto;
+        padding: 10px 12px;
+    }
+}

@@ -7,6 +7,13 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import ElementPlus from 'element-plus';
 import { createPinia } from "pinia";
 import { Tooltip } from "bootstrap";
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faBars, faCaretDown, faCaretUp, faCartShopping, faDolly, faHouse, faLayerGroup, faMinus, faNewspaper, faSearch, faTags } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper);
+
 // Layouts
 import GuestLayout from '@/layouts/GuestLayout.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
@@ -24,6 +31,7 @@ createInertiaApp({
         .component('GuestLayout', GuestLayout)
         .component('AppLayout', AppLayout)
         .component('AdminLayout', AdminLayout)
+        .component('font-awesome-icon', FontAwesomeIcon)
         .component('Link', Link);
         
         app.use(plugin)

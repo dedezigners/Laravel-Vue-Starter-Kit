@@ -1,0 +1,39 @@
+.de-profile {
+    width: 40px;
+    height: 40px;
+    border: 2px solid $white;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba($color: $dark-color, $alpha: 0.625);
+
+    &--image {
+        width: auto;
+        max-height: 40px;
+        border-radius: 100%;
+    }
+
+    &--name {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background-color: $primary-color;
+        color: $white;
+        font-weight: 500;
+        text-transform: uppercase;
+        
+    }
+}
+
+.de-brand {
+    max-height: 34px;
+
+    &__logo {
+        max-height: 34px;
+
+        // &--desktop {
+        //     display: none;
+        // }
+    }
+}

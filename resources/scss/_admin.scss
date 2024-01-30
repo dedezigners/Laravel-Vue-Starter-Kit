@@ -1,8 +1,17 @@
 .de-admin {
+    position: relative;
     display: flex;
     flex-direction: column;
 
-    &__header {
-        display: flex;
+    &--overlay {
+        position: absolute;
+        background-color: rgba($color: $dark-color, $alpha: 0.625);
+        z-index: 2;
+        width: 100vw;
+        height: 100vh;
     }
+
+    // Components
+    @import 'components/admin/header';
+    @import 'components/admin/sidebar';
 }

@@ -1,7 +1,9 @@
 $font-family: 'Poppins', sans-serif;
 
 $primary-color: #0d56e2;
-$secondary-color: #5a67b3;
+$primary-color-inverse: #0846b8;
+$secondary-color: #61b616;
+$secondary-color-inverse: #4d9b08;
 
 $bg-color: #eff2f7;
 
@@ -16,5 +18,8 @@ $text-color: #3e4045;
 $light-text: #7c7b85;
 
 $border-radius: 5px;
+$sidebar-color: #101013;
 
-$app-header-color: #000000;
+$desktop-sidebar-width: 270px;
+$mobile-sidebar-width: 240px;
+$desktop-screen: 'min-width: 992px';

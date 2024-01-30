@@ -1,0 +1,30 @@
+.de-header {
+    position: relative;
+    padding: 10px 0;
+    z-index: 1;
+    background-color: $white;
+    box-shadow: 0 0 10px rgba($color: $dark-color, $alpha: 0.125);
+
+    &--brand {
+        &-image {
+            width: auto;
+            max-height: 34px;
+        }
+    }
+
+    &--content {
+        display: flex;
+        align-items: center;
+    }
+
+    &--list {
+        margin-left: auto;
+        li {
+            margin-right: 10px;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

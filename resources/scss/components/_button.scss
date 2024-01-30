@@ -1,0 +1,37 @@
+.btn {
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+
+    &:active {
+        border: none;
+    }
+
+    &-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    &-block {
+        width: 100%;
+    }
+
+    &-highlight {
+        width: 100%;
+        color: rgba($color: $white, $alpha: 0.8);
+        text-transform: uppercase;
+        background-color: $secondary-color;
+
+        &:active,
+        &:focus,
+        &:focus-within,
+        &:focus-visible,
+        &:hover {
+            color: rgba($color: $white, $alpha: 1);
+            background-color: $secondary-color-inverse;
+        }
+    }
+}
