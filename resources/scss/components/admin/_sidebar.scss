@@ -20,11 +20,13 @@
     }
 
     &__header {
-        padding: 10px 12px;
+        padding: calc($default-padding-x * 2) $default-padding-y;
+        border-bottom: 1px dashed $text-color;
+        margin-bottom: $default-padding-x;
     }
 
     &__content {
-        padding: 10px 12px;
+        padding: $default-padding-x $default-padding-y;
         flex-grow: 1;
         overflow-y: auto;
     }
@@ -37,7 +39,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
-            margin: 8px 0;
+            margin: $default-padding-x 0;
         }
 
         &--item {
@@ -46,7 +48,7 @@
             .item {
                 display: flex;
                 align-items: center;
-                padding: 8px 12px;
+                padding: $default-padding-x $default-padding-y;
                 border-radius: $border-radius;
                 text-decoration: none;
                 cursor: pointer;
@@ -70,25 +72,27 @@
                 }
 
                 &--icon {
-                    transition: all 0.2s ease-in-out;
+                    @include transition;
                     display: inline-block;
                     margin-right: 8px;
                 }
 
                 &--text {
-                    transition: all 0.2s ease-in-out;
+                    @include transition;
                     display: flex;
                     flex-grow: 1;
-                    font-size: 12px;
+                    font-size: $default-fontsize;
+                    line-height: $default-lineheight;
                     font-weight: 500;
-
+                    
                     @media ($desktop-screen) {
-                        font-size: 14px;
+                        font-size: $desktop-fontsize;
+                        line-height: $desktop-lineheight;
                     }
                 }
                 
                 &--arrow {
-                    transition: all 0.2s ease-in-out;
+                    @include transition;
                     page-break-after: always;
                     break-after: always;
                 }
@@ -96,10 +100,10 @@
 
             .sub-menu {
                 flex-direction: column;
-                margin-left: 12px;
+                margin-left: $default-padding-y;
                 display: none;
                 opacity: 0;
-                transition: all 0.3s ease-in-out;
+                @include transition;
 
                 &.show {
                     display: flex;

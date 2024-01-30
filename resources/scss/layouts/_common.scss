@@ -11,14 +11,15 @@ body {
 
 body {
     font-family: $font-family;
-    font-size: 12px;
-    line-height: 18px;
+    font-size: $default-fontsize;
+    line-height: $default-lineheight;
     font-weight: 400;
     background-color: $bg-color;
     color: $text-color;
 
     @media ($desktop-screen) {
-        font-size: 14px;
+        font-size: $desktop-fontsize;
+        line-height: $desktop-lineheight;
     }
 }
 
@@ -81,7 +82,7 @@ button,
 img,
 input,
 span {
-    transition: all 0.3s ease 0s;
+    @include transition;
 }
 
 *:focus {
@@ -136,8 +137,14 @@ input {
 // input::-ms-input-placeholder,
 // input::-moz-input-placeholder,
 input::placeholder {
-    font-size: 12px;
+    font-size: $default-fontsize;
+    line-height: $default-lineheight;
     font-weight: 300;
     color: $light-text !important;
     opacity: 0.85 !important;
+
+    @media ($desktop-screen) {
+        font-size: $desktop-fontsize;
+        line-height: $desktop-lineheight;
+    }
 }

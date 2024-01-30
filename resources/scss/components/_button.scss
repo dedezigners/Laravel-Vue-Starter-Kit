@@ -1,14 +1,16 @@
 .btn {
     padding: 7px 10px;
-    font-size: 12px;
+    font-size: $default-fontsize;
+    line-height: $default-lineheight;
     font-weight: 500;
     border: none;
     border-radius: 3px;
-    transition: all 0.3s ease-in-out;
     cursor: pointer;
+    @include transition;
 
     @media ($desktop-screen) {
-        font-size: 14px;
+        font-size: $desktop-fontsize;
+        line-height: $desktop-lineheight;
     }
 
     &:active {

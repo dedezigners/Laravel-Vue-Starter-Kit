@@ -6,7 +6,7 @@
 
     &--list {
         li {
-            margin-right: 8px;
+            margin-right: $default-padding-x;
             
             &:last-child {
                 margin-right: 0;
