@@ -3,14 +3,29 @@
     align-items: center;
     justify-content: space-between;
     padding: $padding-x $padding-y;
+    flex-direction: column;
+
+    @media ($desktop-screen) {
+        flex-direction: row;
+    }
 
     &--list {
+        order: 1;
+
         li {
             margin-right: $default-padding-x;
             
             &:last-child {
                 margin-right: 0;
             }
+        }
+    }
+
+    &--copyright {
+        order: 2;
+
+        @media ($desktop-screen) {
+            order: 1
         }
     }
 }

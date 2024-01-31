@@ -33,21 +33,8 @@ export default {
         DeFooter,
     },
     setup: () => {
-        const showSidebar = ref(true);
-        const onResizeScreen = () => {
-            const screenWidth = window.innerWidth;
-            showSidebar.value = screenWidth > 991 ? false : true;
-        }
+        const showSidebar = ref(false);
         
-        // onMounted(() => {
-        //     window.addEventListener('resize', onResizeScreen);
-        // });
-
-        // onBeforeUnmount(() => {
-        //     window.removeEventListener('resize', () => {});
-        // });
-        
-
         return {
             showSidebar,
         }

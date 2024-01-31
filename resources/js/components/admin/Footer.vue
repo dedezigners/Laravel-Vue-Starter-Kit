@@ -1,8 +1,8 @@
 <template>
     <div class="de-footer">
-        <p class="de-footer__copyright">&copy; {{ currentYear }} &mdash; Design &amp; Developed by <a href="http://dedezigners.com">DeDezigners</a></p>
+        <p class="de-footer--copyright">&copy; {{ currentYear }} &mdash; Design &amp; Developed by <a href="http://dedezigners.com">DeDezigners</a></p>
         <ul class="de-footer--list">
-            <li><a href="http://dedezigners.com/about" target="_blank">About</a></li>
+            <li><a href="http://dedezigners.com/about" target="_blank">About Us</a></li>
         </ul>
     </div>
 </template>
