@@ -6,6 +6,7 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    border: 1px solid transparent;
     @include transition;
 
     @media ($desktop-screen) {
@@ -43,6 +44,20 @@
         &:hover {
             color: rgba($color: $white, $alpha: 1);
             background-color: $secondary-color-inverse;
+        }
+    }
+
+    &-primary {
+        background-color: $primary-color;
+        color: $white;
+
+        &-outline {
+            color: $primary-color;
+            border: 1px solid $primary-color;
+            background-color: rgba($color: $primary-color, $alpha: 0);
+
+            @include btn-hover(color, $primary-color);
+            @include btn-hover(background-color, rgba($color: $primary-color, $alpha: 0.1));
         }
     }
 }

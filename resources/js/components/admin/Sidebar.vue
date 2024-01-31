@@ -7,7 +7,7 @@
             </Link>
         </div>
         <div class="de-sidebar__content">
-            <ul class="de-sidebar__menu" v-for="(item, i) in SidebarMenu" :key="i">
+            <ul class="de-sidebar__menu" v-for="(item, i) in sidebarMenu" :key="i">
                 <li v-if="item.heading" class="de-sidebar__menu--heading">{{ item.heading }}</li>
                 <li v-for="(menu, j) in item.pages" :key="j" class="de-sidebar__menu--item">
                     <MenuItem :menu="menu" :prefix="item.prefix" :active="urlPath === item.prefix + menu.route" />
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import SidebarMenu from '@/core/SidebarMenu';
+import sidebarMenu from '@/core/sidebarMenu';
 import MenuItem from './MenuItem.vue';
 import { router } from '@inertiajs/vue3';
 
@@ -39,9 +39,9 @@ export default {
         const urlPath = router.page.url;
 
         return {
-            SidebarMenu,
+            sidebarMenu,
             urlPath,
         }
     }
 }
-</script>
+</script>@/core/sidebarMenu

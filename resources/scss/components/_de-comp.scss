@@ -35,30 +35,3 @@
         max-height: 34px;
     }
 }
-
-.de-breadcrumb {
-    padding: $padding-x $padding-y;
-    
-    &--title {
-        margin-bottom: 5px;
-        color: $black;
-    }
-
-    &--item {
-        margin-right: $default-padding-x;
-
-        &::after {
-            content: '-';
-            margin-left: $default-padding-x;
-        }
-
-        &:last-child {
-            margin-right: 0;
-
-            &::after {
-                content: '';
-                margin-left: 0;
-            }
-        }
-    }
-}

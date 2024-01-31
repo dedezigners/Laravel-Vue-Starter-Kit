@@ -7,7 +7,7 @@
             <DeSidebar :show="showSidebar" />
             
             <div class="de-admin__main">
-                <DeBreadcrumb />
+                <DeBreadcrumb :title="title" :breadcrumbs="breadcrumbs" />
                 <div class="de-admin__content">
                     <slot></slot>
                 </div>
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { PropType, ref } from 'vue';
 import DeHeader from '@/components/admin/Header.vue';
 import DeSidebar from '@/components/admin/Sidebar.vue';
 import DeBreadcrumb from '@/components/admin/Breadcrumb.vue';
@@ -31,6 +31,10 @@ export default {
         DeSidebar,
         DeBreadcrumb,
         DeFooter,
+    },
+    props: {
+        title: String,
+        breadcrumbs: Array as PropType<String[]>,
     },
     setup: () => {
         const showSidebar = ref(false);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthController;
@@ -35,5 +36,14 @@ Route::middleware('auth')->group(function () {
     
     // Admin Routes
     Route::redirect('admin', 'admin/dashboard');
-    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::prefix('admin')->group(function() {
+        Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        
+        // Blog
+        Route::prefix('blog')->group(function () {
+            Route::get('posts', [PostController::class, 'index']);
+            Route::get('posts/create', [PostController::class, 'create']);
+        });
+    });
+
 });

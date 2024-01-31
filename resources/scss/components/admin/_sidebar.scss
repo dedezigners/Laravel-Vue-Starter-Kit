@@ -20,9 +20,13 @@
     }
 
     &__header {
-        padding: calc($default-padding-x * 2) $default-padding-y;
+        display: flex;
+        padding: $default-padding-x $default-padding-y;
         border-bottom: 1px dashed $text-color;
         margin-bottom: $default-padding-x;
+        height: $desktop-header-height;
+        vertical-align: middle;
+        align-items: center;
     }
 
     &__content {

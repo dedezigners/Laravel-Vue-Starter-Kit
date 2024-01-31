@@ -5,7 +5,7 @@
     background-color: $white;
     height: $desktop-header-height;
     max-height: $desktop-header-height;
-    box-shadow: 0 0 10px rgba($color: $dark-color, $alpha: 0.125);
+    box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.225);
 
     @media ($desktop-screen) {
         margin-left: $desktop-sidebar-width;

@@ -1,0 +1,31 @@
+.de-breadcrumb {
+    padding: $padding-x $padding-y;
+    
+    &--title {
+        margin-bottom: 5px;
+        color: $black;
+        text-transform: capitalize;
+    }
+
+    &--item {
+        display: inline-flex;
+        margin-right: $default-padding-x;
+        text-transform: capitalize;
+        user-select: contain;
+        cursor: text;
+
+        &::after {
+            content: '-';
+            margin-left: $default-padding-x;
+        }
+
+        &:last-child {
+            margin-right: 0;
+
+            &::after {
+                content: '';
+                margin-left: 0;
+            }
+        }
+    }
+}

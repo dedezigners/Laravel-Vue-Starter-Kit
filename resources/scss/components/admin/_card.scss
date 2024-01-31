@@ -1,0 +1,38 @@
+.de-card {
+    position: relative;
+    // padding: calc($padding-x * 2) $padding-y;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.125);
+    margin-bottom: $default-padding-x;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $padding-x * 2 $padding-y;
+        border-left: calc($padding-x / 2) solid $primary-color;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+
+        &--title {
+            color: $black;
+            font-weight: 700;
+        }
+
+        &--desc {
+            color: $light-text;
+        }
+
+        &::before {
+            position: absolute;
+            height: 100%;
+            width: $default-padding-x;
+            background-color: $primary-color;
+        }
+    }
+}
