@@ -2,7 +2,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-@mixin box-shadow {
+@mixin shadow {
     box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.45);
 }
 

@@ -1,6 +1,5 @@
 .de-header {
     position: relative;
-    padding: 10px 0;
     z-index: 1;
     background-color: $white;
     height: $desktop-header-height;
@@ -21,16 +20,86 @@
     &--content {
         display: flex;
         align-items: center;
-        // height: 100%;
+        height: 100%;
     }
 
     &--list {
         margin-left: auto;
+        
         li {
+            padding: 10px 0;
+            position: relative;
             margin-right: 10px;
             
             &:last-child {
                 margin-right: 0;
+            }
+
+            .dropdown {
+                position: absolute;
+                width: 200px;
+                right: -250px;
+                top: 60px;
+                opacity: 0;
+                background-color: $white;
+                border-radius: $border-radius;
+                padding: $padding-x 0;
+                @include shadow;
+                @include transition;
+
+                @media ($desktop-screen) {
+                    width: 240px;
+                }
+                
+                &-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 $default-padding-y;
+                    
+                    .de-profile {
+                        margin-right: $default-padding-x;
+                    }
+
+                    .de-about {
+                        h5 { color: $black; }
+                        span {
+                            color: $light-text;
+                            font-size: 11px;
+                        }
+                    }
+
+                    &--seprator {
+                        border-top: 1px solid $light-border;
+                        margin: $default-padding-x 0;
+                        padding: 0 0;
+                    }
+
+                    &--link {
+                        border: 0;
+                        box-shadow: 0;
+                        outline: none;
+                        display: flex;
+                        width: 100%;
+                        padding: $default-padding-x $default-padding-y;
+                        background-color: transparent;
+                        border-radius: $border-radius;
+                        text-decoration: none;
+                        color: $light-text;
+
+                        &:hover {
+                            color: $primary-color;
+                            background-color: $light-border;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .dropdown {
+                    top: 60px;
+                    right: 0;
+                    opacity: 1;
+                }
             }
         }
     }

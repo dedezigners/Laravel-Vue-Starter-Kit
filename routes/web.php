@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +45,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('blog')->group(function () {
             Route::get('posts', [PostController::class, 'index']);
             Route::get('posts/create', [PostController::class, 'create']);
+            Route::get('categories', [CategoryController::class, 'index']);
+            Route::get('tags', [TagController::class, 'index']);
         });
     });
 
