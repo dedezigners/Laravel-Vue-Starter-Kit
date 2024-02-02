@@ -5,9 +5,14 @@
     height: $desktop-header-height;
     max-height: $desktop-header-height;
     box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.225);
+    @include transition;
 
     @media ($desktop-screen) {
         margin-left: $desktop-sidebar-width;
+    }
+
+    &--lg {
+        margin-left: 60px;
     }
 
     &--brand {

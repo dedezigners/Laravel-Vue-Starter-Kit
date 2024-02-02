@@ -10,9 +10,9 @@ import { Tooltip } from "bootstrap";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faBars, faCaretDown, faCaretUp, faCartShopping, faDolly, faHouse, faLayerGroup, faMinus, faNewspaper, faSearch, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBars, faCaretDown, faCaretUp, faCartShopping, faDolly, faHouse, faLayerGroup, faMinus, faNewspaper, faPaperPlane, faSearch, faTags } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper);
+library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper, faArrowLeft, faPaperPlane);
 
 // Layouts
 import GuestLayout from '@/layouts/GuestLayout.vue';

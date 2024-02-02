@@ -1,9 +1,16 @@
 <template>
-    <div :class="['de-sidebar', show ? 'active' : '']">
+    <div :class="[
+        'de-sidebar',
+        small ? 'de-sidebar--sm' : '',
+        show ? 'active' : '',
+    ]">
+        <div class="de-sidebar__toggle" @click="$emit('on-toogle')">
+            <font-awesome-icon icon="arrow-left" />
+        </div>
         <div class="de-sidebar__header">
             <Link class="de-brand" href="/admin">
-                <!-- <img class="de-brand__logo de-brand__logo--mobile" src="/assets/images/logo/dede.svg" alt="DeDe"> -->
-                <img class="de-brand__logo de-brand__logo--desktop" src="/assets/images/logo/logo-light.png" alt="DeDezigners">
+                <img class="de-brand__logo de-brand__logo--sm" src="/assets/images/logo/logo-icon.png" alt="DeDe">
+                <img class="de-brand__logo de-brand__logo--lg" src="/assets/images/logo/logo-light.png" alt="DeDezigners">
             </Link>
         </div>
         <div class="de-sidebar__content">
@@ -15,7 +22,13 @@
             </ul>
         </div>
         <div class="de-sidebar__footer">
-            <a href="/" class="btn btn-highlight" target="_blank">Starter Kit</a>
+            <a href="/" class="btn btn-icon btn-highlight btn--sm" target="_blank">
+                <font-awesome-icon icon="paper-plane" />
+            </a>
+            <a href="/" class="btn btn-block btn-highlight btn--lg" target="_blank">
+                <font-awesome-icon class="me-2" icon="paper-plane" />
+                <span>Starter Kit</span>
+            </a>
         </div>
     </div>
 </template>
@@ -32,8 +45,13 @@ export default {
         show: {
             type: Boolean,
             required: true,
+        },
+        small: {
+            type: Boolean,
+            default: false,
         }
     },
+    emits: ['on-toogle'],
     setup: () => {
         // @ts-ignore
         const urlPath = router.page.url;
@@ -44,4 +62,4 @@ export default {
         }
     }
 }
-</script>@/core/sidebarMenu
+</script>

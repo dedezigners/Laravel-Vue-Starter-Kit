@@ -1,4 +1,5 @@
 .de-sidebar {
+    $ds: &;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,7 @@
     z-index: 3;
     top: 0;
     left: -$mobile-sidebar-width;
-    transition: all 0.3s ease-in-out;
+    @include transition;
 
     @media ($desktop-screen) {
         width: $desktop-sidebar-width;
@@ -19,6 +20,26 @@
         left: 0;
     }
 
+    &__toggle {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: $white;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: $border-radius;
+        right: -15px;
+        top: 15px;
+        cursor: pointer;
+        @include shadow;
+        @include transition;
+
+        @media ($desktop-screen) {
+            display: flex;
+        }
+    }
+
     &__header {
         display: flex;
         padding: $default-padding-x $default-padding-y;
@@ -27,6 +48,10 @@
         height: $desktop-header-height;
         vertical-align: middle;
         align-items: center;
+
+        .de-brand__logo--sm {
+            display: none;
+        }
     }
 
     &__content {
@@ -57,6 +82,7 @@
                 text-decoration: none;
                 cursor: pointer;
                 user-select: none;
+                height: $sidebar-icon-size;
 
                 &:hover {
                     color: $white;
@@ -78,7 +104,8 @@
                 &--icon {
                     @include transition;
                     display: inline-block;
-                    margin-right: 8px;
+                    margin-right: $default-padding-x;
+                    font-size: medium;
                 }
 
                 &--text {
@@ -120,5 +147,51 @@
     &__footer {
         // margin-top: auto;
         padding: 10px 12px;
+
+        .btn--sm { display: none; }
+        .btn--lg { display: block; }
+    }
+
+    // TODOS: fixed grand parent selector with #{$ds}
+    @media ($desktop-screen) {
+        &--sm {
+            width: 60px;
+
+            .de-sidebar__toggle {
+                right: -40px;
+                transform: rotate(180deg);
+            }
+
+            .de-brand__logo--lg { display: none; }
+            .de-brand__logo--sm { display: block; }
+
+            .de-sidebar__menu--heading {
+                opacity: 0;
+            }
+
+            .de-sidebar__footer {
+                .btn--lg { display: none; }
+                .btn--sm { display: block; }
+            }
+
+            .item {
+                width: $sidebar-icon-size;
+                justify-content: center;
+                padding: 0 0;
+
+                &--icon {
+                    margin-right: 0;
+                    line-height: $default-lineheight;
+                }
+    
+                &--text {
+                    display: none;
+                }
+    
+                &--arrow {
+                    display: none;
+                }
+            }
+        }
     }
 }

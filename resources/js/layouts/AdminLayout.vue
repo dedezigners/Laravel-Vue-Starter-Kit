@@ -1,12 +1,12 @@
 <template>
-    <div class="de-admin">
-        <div :class="showSidebar ? 'de-admin--overlay' : ''" @click.self="showSidebar = false"></div>
-        <DeHeader @show-sidebar="showSidebar = true" />
+    <div :class="['de-admin']">
+        <div v-if="showSidebar" :class="showSidebar ? 'de-admin--overlay' : ''" @click.self="showSidebar = false"></div>
+        <DeHeader :class="smallSidebar ? 'de-header--lg' : ''" @show-sidebar="showSidebar = true" />
 
         <div class="de-admin__wrapper">
-            <DeSidebar :show="showSidebar" />
+            <DeSidebar :show="showSidebar" :small="smallSidebar" @on-toogle="smallSidebar = !smallSidebar" />
             
-            <div class="de-admin__main">
+            <div :class="['de-admin__main', smallSidebar ? 'de-admin__main--lg' : '']">
                 <DeBreadcrumb :title="title" :breadcrumbs="breadcrumbs" />
                 <div class="de-admin__content">
                     <slot></slot>
@@ -38,9 +38,11 @@ export default {
     },
     setup: () => {
         const showSidebar = ref(false);
+        const smallSidebar = ref(false);
         
         return {
             showSidebar,
+            smallSidebar,
         }
     }
 }

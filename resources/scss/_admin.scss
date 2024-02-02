@@ -15,9 +15,14 @@
         display: flex;
         flex-direction: column;
         height: calc(100vh - $desktop-header-height);
+        @include transition;
         
         @media ($desktop-screen) {
             margin-left: $desktop-sidebar-width;
+        }
+
+        &--lg {
+            margin-left: 60px;
         }
     }
 
