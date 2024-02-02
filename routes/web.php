@@ -49,5 +49,4 @@ Route::middleware('auth')->group(function () {
             Route::get('tags', [TagController::class, 'index']);
         });
     });
-
 });
