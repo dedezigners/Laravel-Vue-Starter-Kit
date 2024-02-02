@@ -38,6 +38,7 @@ export default {
     },
     setup: () => {
         const showSidebar = ref(false);
+        // TODOS: smallSidebar should worked with state properties for no behaviour change on page load!
         const smallSidebar = ref(false);
         
         return {
