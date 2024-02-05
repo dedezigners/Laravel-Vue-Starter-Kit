@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index']);
+Route::post('/authenticated', [AuthController::class, 'isAuthenticated']);
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');

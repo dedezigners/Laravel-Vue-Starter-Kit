@@ -1,0 +1,31 @@
+.de-header {
+    padding: 10px 0;
+    box-shadow: 0 0 5px rgba($color: $dark-color, $alpha: 0.275);
+
+    &-inner {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &-brand {
+        &--logo {
+            width: auto;
+            max-height: 40px;
+        }
+    }
+
+    &-nav {
+        margin-left: auto;
+
+        &--list {
+            &-item {
+                padding: 0 12px;
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}

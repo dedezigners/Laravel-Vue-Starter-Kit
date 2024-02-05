@@ -87,4 +87,13 @@ class AuthController extends Controller
 
         return redirect()->back();
     }
+
+    public function isAuthenticated(Request $request)
+    {
+        if (Auth::check()) {
+            return new AuthResource(Auth::user());
+        }
+
+        return null;
+    }
 }

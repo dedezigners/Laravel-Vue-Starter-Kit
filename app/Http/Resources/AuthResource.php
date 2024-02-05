@@ -15,6 +15,7 @@ class AuthResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            // 'image' => '/assets/images/profile.jpeg',
             'name' => $this->name,
             'username' => $this->username,
             'is_admin' => $this->role === 'admin',

@@ -12,3 +12,11 @@ export interface Menu {
     is_active: boolean,
     pages: MenuItem[],
 }
+
+export interface AuthUser {
+    image: string | null,
+    name: string,
+    user: string,
+    is_admin: boolean,
+    role: string,
+}

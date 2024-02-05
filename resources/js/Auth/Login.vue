@@ -26,13 +26,14 @@
 </template>
 
 <script lang="ts">
-import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import axios from 'axios';
+import { useAuthStore } from '@/store/auth';
 
 export default {
     name: "AppLogin",
     setup: () => {
+        const authStore = useAuthStore();
         const errors = ref<any>([]);
         const formData = ref({
             identity: null,
@@ -44,7 +45,7 @@ export default {
             errors.value = [];
 
             axios.post(`login`, formData.value).then(res => {
-                router.visit(res.data.data.is_admin ? '/admin' : '/dashboard');
+                authStore.setAuth(res.data.data);
             }).catch(error => {
                 console.error(error.response.data);
                 errors.value = error.response.data.errors ?? [];

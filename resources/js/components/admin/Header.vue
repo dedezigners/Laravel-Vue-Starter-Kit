@@ -10,35 +10,32 @@
                 </Link>
                 <ul class="de-header--list">
                     <li>
-                        <button class="btn btn-icon">
-                            <font-awesome-icon icon="search" />
-                        </button>
-                    </li>
-                    <li>
                         <figure class="de-profile">
-                            <span class="de-profile--name">AT</span>
+                            <img v-if="authUser?.image" :src="authUser?.image" :alt="authUser?.name" class="de-profile--image">
+                            <span v-else class="de-profile--name">{{ authUser?.name.substring(0, 2) }}</span>
                         </figure>
 
                         <div class="dropdown">
                             <div class="dropdown-item">
                                 <figure class="de-profile de-profile--lg">
-                                    <img src="/assets/images/profile.jpeg" alt="Profile Image" class="de-profile--image">
+                                    <img v-if="authUser?.image" :src="authUser?.image" :alt="authUser?.name" class="de-profile--image">
+                                    <span v-else class="de-profile--name">{{ authUser?.name.substring(0, 2) }}</span>
                                 </figure>
                                 <div class="de-about">
-                                    <h5>Atif Ibrahim</h5>
-                                    <span>Admin</span>
+                                    <h5>{{ authUser?.name }}</h5>
+                                    <span>{{ authUser?.role.toUpperCase() }}</span>
                                 </div>
                             </div>
                             <div class="dropdown-item dropdown-item--seprator"></div>
                             <div class="dropdown-item">
-                                <Link class="dropdown-item--link">My Profile</Link>
+                                <Link href="/admin/profile" class="dropdown-item--link">My Profile</Link>
                             </div>
                             <div class="dropdown-item">
-                                <Link class="dropdown-item--link">Change Password</Link>
+                                <Link href="/admin/change-password" class="dropdown-item--link">Change Password</Link>
                             </div>
                             <div class="dropdown-item dropdown-item--seprator"></div>
                             <div class="dropdown-item">
-                                <button class="dropdown-item--link">Sign Out</button>
+                                <Link href="/logout" class="dropdown-item--link">Sign Out</Link>
                             </div>
                         </div>
                     </li>
@@ -49,10 +46,19 @@
 </template>
 
 <script lang="ts">
+import { useAuthStore } from '@/store/auth';
+
 export default {
     name: "DeHeader",
     emits: ['show-sidebar'],
     components: {},
-    setup: () => { }
+    setup: () => {
+        const authStore = useAuthStore();
+        const authUser = authStore.user;
+
+        return {
+            authUser,
+        }
+    }
 }
 </script>
