@@ -5,8 +5,15 @@
 </template>
 
 <script lang="ts">
+import { useAuthStore } from '@/store/auth';
+
 export default {
     name: "Auth",
-    setup: () => {}
+    setup: () => {
+        const authStore = useAuthStore();
+        authStore.getAuth();
+
+        return {}
+    }
 }
 </script>
