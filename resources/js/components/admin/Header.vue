@@ -11,19 +11,19 @@
                 <ul class="de-header--list">
                     <li>
                         <figure class="de-profile">
-                            <img v-if="authUser?.image" :src="authUser?.image" :alt="authUser?.name" class="de-profile--image">
-                            <span v-else class="de-profile--name">{{ authUser?.name.substring(0, 2) }}</span>
+                            <img v-if="authStore.user?.image" :src="authStore.user?.image" :alt="authStore.user?.name" class="de-profile--image">
+                            <span v-else class="de-profile--name">{{ authStore.user?.name.substring(0, 2) }}</span>
                         </figure>
 
                         <div class="dropdown">
                             <div class="dropdown-item">
                                 <figure class="de-profile de-profile--lg">
-                                    <img v-if="authUser?.image" :src="authUser?.image" :alt="authUser?.name" class="de-profile--image">
-                                    <span v-else class="de-profile--name">{{ authUser?.name.substring(0, 2) }}</span>
+                                    <img v-if="authStore.user?.image" :src="authStore.user?.image" :alt="authStore.user?.name" class="de-profile--image">
+                                    <span v-else class="de-profile--name">{{ authStore.user?.name.substring(0, 2) }}</span>
                                 </figure>
                                 <div class="de-about">
-                                    <h5>{{ authUser?.name }}</h5>
-                                    <span>{{ authUser?.role.toUpperCase() }}</span>
+                                    <h5>{{ authStore.user?.name }}</h5>
+                                    <span>{{ authStore.user?.role.toUpperCase() }}</span>
                                 </div>
                             </div>
                             <div class="dropdown-item dropdown-item--seprator"></div>
@@ -54,10 +54,9 @@ export default {
     components: {},
     setup: () => {
         const authStore = useAuthStore();
-        const authUser = authStore.user;
 
         return {
-            authUser,
+            authStore,
         }
     }
 }

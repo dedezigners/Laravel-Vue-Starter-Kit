@@ -1,6 +1,5 @@
 <template>
-    <SplashScreen v-if="authStore.isLoading" />
-    <div v-else :class="['de-admin']">
+    <div :class="['de-admin']">
         <div v-if="showSidebar" :class="showSidebar ? 'de-admin--overlay' : ''" @click.self="showSidebar = false"></div>
         <DeHeader :class="smallSidebar ? 'de-header--lg' : ''" @show-sidebar="showSidebar = true" />
 
@@ -19,7 +18,6 @@
 </template>
 
 <script lang="ts">
-import SplashScreen from '@/components/Splashscreen.vue';
 import { PropType, ref } from 'vue';
 import DeHeader from '@/components/admin/Header.vue';
 import DeSidebar from '@/components/admin/Sidebar.vue';
@@ -30,7 +28,6 @@ import { useAuthStore } from '@/store/auth';
 export default {
     name: "Admin",
     components: {
-        SplashScreen,
         DeHeader,
         DeSidebar,
         DeBreadcrumb,
@@ -48,7 +45,6 @@ export default {
         authStore.getAuth();
         
         return {
-            authStore,
             showSidebar,
             smallSidebar,
         }
