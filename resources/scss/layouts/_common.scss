@@ -135,19 +135,3 @@ input {
     font-size: inherit;
     font-weight: 400;
 }
-
-// input::-webkit-input-placeholder,
-// input::-ms-input-placeholder,
-// input::-moz-input-placeholder,
-input::placeholder {
-    font-size: $default-fontsize;
-    line-height: $default-lineheight;
-    font-weight: 300;
-    color: $light-text !important;
-    opacity: 0.85 !important;
-
-    @media ($desktop-screen) {
-        font-size: $desktop-fontsize;
-        line-height: $desktop-lineheight;
-    }
-}

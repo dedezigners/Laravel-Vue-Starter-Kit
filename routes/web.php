@@ -44,10 +44,12 @@ Route::middleware('auth')->group(function () {
         
         // Blog
         Route::prefix('blog')->group(function () {
-            Route::get('posts', [PostController::class, 'index']);
-            Route::get('posts/create', [PostController::class, 'create']);
-            Route::get('categories', [CategoryController::class, 'index']);
-            Route::get('tags', [TagController::class, 'index']);
+            Route::apiResource('categories', CategoryController::class);
+
+            // Route::get('posts', [PostController::class, 'index']);
+            // Route::get('posts/create', [PostController::class, 'create']);
+            // Route::get('categories', [CategoryController::class, 'index']);
+            // Route::get('tags', [TagController::class, 'index']);
         });
     });
 });

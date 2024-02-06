@@ -14,6 +14,19 @@ const menu: Menu[] = [
         ]
     },
     {
+        heading: "User",
+        prefix: '/admin',
+        is_active: false,
+        pages: [
+            {
+                name: "Dashboard",
+                route: '/dashboard',
+                icon: 'house',
+                is_active: false,
+            }
+        ]
+    },
+    {
         heading: "Blog",
         prefix: '/admin/blog',
         is_active: false,

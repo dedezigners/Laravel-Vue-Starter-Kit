@@ -20,7 +20,6 @@ export const useAuthStore = defineStore('auth', () => {
             loading.value = false;
             authenticated.value = res.data?.data ? true : false;
             authUser.value = res.data?.data;
-            console.log(user.value);
             removeSplashClass();
         }).catch(e => {
             loading.value = false;
