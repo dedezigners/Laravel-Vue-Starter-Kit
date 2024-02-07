@@ -10,14 +10,15 @@ import { Tooltip } from "bootstrap";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowLeft, faArrowRightLong, faBars, faCaretDown, faCaretUp, faCartShopping, faClose, faDolly, faHouse, faLayerGroup, faMinus, faNewspaper, faPaperPlane, faSearch, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDownLong, faArrowLeft, faArrowRightLong, faArrowRotateLeft, faBars, faCaretDown, faCaretUp, faCartShopping, faClose, faDolly, faHouse, faLayerGroup, faMinus, faNewspaper, faPaperPlane, faPenToSquare, faSearch, faSpinner, faTags, faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper, faArrowLeft, faPaperPlane, faClose, faArrowRightLong);
+library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper, faArrowLeft, faPaperPlane, faClose, faArrowRightLong, faArrowDownLong, faPenToSquare, faSpinner, faTrash, faArrowRotateLeft, faTrashCan);
 
 // Layouts
 import GuestLayout from '@/layouts/GuestLayout.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import DeTable from './components/datatable/DeDatatable.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -31,6 +32,7 @@ createInertiaApp({
         .component('GuestLayout', GuestLayout)
         .component('AppLayout', AppLayout)
         .component('AdminLayout', AdminLayout)
+        .component('DeDatatable', DeTable)
         .component('font-awesome-icon', FontAwesomeIcon)
         .component('Link', Link);
         

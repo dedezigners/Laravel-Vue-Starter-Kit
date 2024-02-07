@@ -1,10 +1,9 @@
 .de-card {
     position: relative;
-    // padding: calc($padding-x * 2) $padding-y;
     background-color: $white;
     border-radius: $border-radius;
     box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.125);
-    margin-bottom: $default-padding-x;
+    margin-bottom: $padding-x;
 
     &:last-child {
         margin-bottom: 0;
@@ -34,5 +33,12 @@
             width: $default-padding-x;
             background-color: $primary-color;
         }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: flex-end;
+        box-shadow: none;
+        background-color: transparent !important;
     }
 }

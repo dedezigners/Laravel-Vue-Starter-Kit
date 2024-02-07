@@ -20,3 +20,20 @@ export interface AuthUser {
     is_admin: boolean,
     role: string,
 }
+
+export interface DeTableHead {
+    label: string,
+    name: string,
+    sort: boolean,
+    class?: string,
+}
+
+export interface Category {
+    id: number,
+    icon: string | null,
+    name: string,
+    slug: string,
+    parent: number | null,
+    desc: string | null,
+    created_at: string,
+}

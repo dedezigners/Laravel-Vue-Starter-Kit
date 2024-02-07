@@ -22,4 +22,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'parent', 'id');
+    }
 }

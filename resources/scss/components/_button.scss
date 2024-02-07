@@ -6,10 +6,9 @@
     font-size: $default-fontsize;
     line-height: $default-lineheight;
     font-weight: 500;
-    border: 0 solid transparent;
-    border-radius: 3px;
+    border-radius: $border-radius;
     cursor: pointer;
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     @include transition;
 
     @media ($desktop-screen) {
@@ -21,8 +20,18 @@
         margin-left: $default-padding-x;
     }
 
-    &:active {
-        border: none;
+    &-sm {
+        padding: calc($default-padding-x / 2) calc($default-padding-y / 2);
+        border-radius: 2px;
+    }
+
+    &-lg {
+        padding: calc($default-padding-x * 2) calc($default-padding-y * 2);
+        border-radius: $border-radius;
+    }
+
+    &-block {
+        width: 100%;
     }
 
     &-icon {
@@ -33,18 +42,11 @@
             margin-left: 0;
         }
 
-        &:hover {
-            background-color: $light-color;
+        &.btn-sm {
+            width: 32px;
+            height: 32px;
+            border-radius: 2px;
         }
-    }
-
-    &-lg {
-        padding: calc($default-padding-x * 2) calc($default-padding-y * 2);
-        border-radius: $border-radius;
-    }
-
-    &-block {
-        width: 100%;
     }
 
     &-highlight {
@@ -65,15 +67,16 @@
     &-primary {
         background-color: $primary-color;
         background-image: radial-gradient(circle farthest-corner at -4% -12.9%,
-            $primary-color 0%,
-            $splash-color 100%);
+                $primary-color 0%,
+                $splash-color 100%);
         color: $white;
 
 
 
         @include btn-hover(background-image, radial-gradient(circle farthest-corner at -4% -12.9%,
-        $splash-color 0%,
-        $primary-color 100%));
+                $splash-color 0%,
+                $primary-color 100%));
+
         &-outline {
             color: $primary-color;
             border: 1px solid $primary-color;
@@ -86,5 +89,31 @@
 
     &.de-submit {
         margin: 0 auto;
+
+        &--loading {
+            span {
+                display: none;
+            }
+
+            &::before {
+                content: "Please Wait";
+            }
+
+            .svg-inline--fa {
+                animation: de-spin 1.5s linear infinite;
+            }
+
+            @keyframes de-spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+        }
     }
 }

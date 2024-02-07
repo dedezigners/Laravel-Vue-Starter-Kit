@@ -44,7 +44,9 @@ Route::middleware('auth')->group(function () {
         
         // Blog
         Route::prefix('blog')->group(function () {
-            Route::apiResource('categories', CategoryController::class);
+            Route::apiResource('categories', CategoryController::class)->except('update', 'show');
+            Route::put('categories/{id}', [CategoryController::class, 'restore']);
+            Route::delete('categories/{id}/permanent', [CategoryController::class, 'permanentDelete']);
 
             // Route::get('posts', [PostController::class, 'index']);
             // Route::get('posts/create', [PostController::class, 'create']);
