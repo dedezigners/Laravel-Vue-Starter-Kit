@@ -37,3 +37,11 @@ export interface Category {
     desc: string | null,
     created_at: string,
 }
+
+export interface Tag {
+    id: number,
+    name: string,
+    slug: string,
+    desc: string | null,
+    created_at: string,
+}

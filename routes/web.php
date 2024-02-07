@@ -47,11 +47,10 @@ Route::middleware('auth')->group(function () {
             Route::apiResource('categories', CategoryController::class)->except('show');
             Route::put('categories/{id}/restore', [CategoryController::class, 'restore']);
             Route::delete('categories/{id}/permanent', [CategoryController::class, 'permanentDelete']);
-
-            // Route::get('posts', [PostController::class, 'index']);
-            // Route::get('posts/create', [PostController::class, 'create']);
-            // Route::get('categories', [CategoryController::class, 'index']);
-            // Route::get('tags', [TagController::class, 'index']);
+            
+            Route::apiResource('tags', TagController::class)->except('show');
+            Route::put('tags/{id}/restore', [TagController::class, 'restore']);
+            Route::delete('tags/{id}/permanent', [TagController::class, 'permanentDelete']);
         });
     });
 });

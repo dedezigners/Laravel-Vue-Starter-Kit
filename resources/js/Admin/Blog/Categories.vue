@@ -51,7 +51,7 @@ import CategoryModal from '@/components/modals/blog/CategoryModal.vue';
 import { useCrud } from '@/core/crud';
 
 export default {
-    name: 'Categories',
+    name: 'BlogCategories',
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,

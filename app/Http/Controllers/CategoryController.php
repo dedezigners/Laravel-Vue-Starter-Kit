@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $trashedCategories = Category::onlyTrashed()->latest()->get();
         return Inertia::render('Admin/Blog/Categories', [
             'categories' => CategoryResource::collection($categories),
-            'trashedCategories' => CategoryResource::collection($trashedCategories),
+            'trashed-categories' => CategoryResource::collection($trashedCategories),
         ]);
     }
 
