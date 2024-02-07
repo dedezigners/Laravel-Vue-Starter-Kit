@@ -4,20 +4,24 @@
             <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }} Categories</h3>
 
             <div class="de-card__actions">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#de--category">Create
-                    Category</button>
+                <button class="btn btn-primary" ref="modalButtonRef"
+                @click="editData = null"
+                data-bs-toggle="modal" data-bs-target="#de--category">
+                Create Category</button>
             </div>
         </div>
 
         <div class="de-card de-card__info">
             <button :class="['btn btn-sm', showTrashed ? 'btn-secondary' : 'btn-outline-secondary']"
-                @click="showTrashed = !showTrashed">Show {{ showTrashed ? 'Active' : 'Trashed' }}</button>
+            @click="showTrashed = !showTrashed">
+                Show {{ showTrashed ? 'Active' : 'Trashed' }}
+            </button>
         </div>
 
         <div class="de-card de-card__body">
             <DeDatatable :header="tableHead" :data="showTrashed ? trashedCategories.data : categories.data">
                 <template v-slot:actions="{ data: item }">
-                    <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-secondary me-2">
+                    <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-secondary me-2" @click="onEditSelect(item.id)">
                         <font-awesome-icon icon="pen-to-square" />
                     </button>
                     <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-danger" @click="onDelete(item.id)">
@@ -35,12 +39,12 @@
         </div>
     </admin-layout>
 
-    <CategoryModal :categories="categories.data" @create="onCreate" />
+    <CategoryModal :categories="categories.data" :data="editData" @create="onCreate" @edit="onEdit" />
 </template>
 
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { DeTableHead } from '@/core/type';
+import { Category, DeTableHead } from '@/core/type';
 import { ElMessageBox } from 'element-plus';
 import CategoryModal from '@/components/modals/blog/CategoryModal.vue';
 import axios from 'axios';
@@ -55,7 +59,9 @@ export default {
     },
     components: { CategoryModal },
     setup: (props) => {
+        const modalButtonRef = ref<HTMLElement | null>(null);
         const showTrashed = ref(false);
+        const editData = ref<Category | null>(null);
         const tableHead = ref<DeTableHead[]>([
             { label: "ID", name: "id", sort: true },
             { label: "Name", name: "name", sort: true },
@@ -64,7 +70,19 @@ export default {
             { label: "Actions", name: "actions", sort: false, class: 'text-end', },
         ]);
 
+        const onEditSelect = (id: number) => {
+            const data = props.categories.data.find((c: { id: number }) => c.id === id);
+            modalButtonRef.value?.click();
+            editData.value = data;
+        }
+
         const onCreate = (item: any) => {
+            props.categories.data.unshift(item);
+        }
+        
+        const onEdit = (item: any) => {
+            const rowIndex = props.categories.data.findIndex((c: { id: number }) => c.id === editData.value?.id);
+            props.categories.data.splice(rowIndex, 1);
             props.categories.data.unshift(item);
         }
 
@@ -119,8 +137,12 @@ export default {
 
         return {
             showTrashed,
+            editData,
             tableHead,
+            modalButtonRef,
+            onEditSelect,
             onCreate,
+            onEdit,
             onDelete,
             onRestore,
             onPermanent,

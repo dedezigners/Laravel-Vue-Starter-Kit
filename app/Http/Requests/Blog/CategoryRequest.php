@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Blog;
 
+use App\Models\Blog\Category;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -21,12 +23,21 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        if ($this->method() === 'PUT') {
+            $conditionalValidation = [
+                'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', Rule::unique(Category::class)->ignore($this->category->id)],
+            ];
+        } else {
+            $conditionalValidation = [
+                'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', Rule::unique(Category::class)],
+            ];
+        }
+        
+        return array_merge([
             'icon' => ['nullable', 'image', 'max:500'],
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', 'unique:categories'],
             'desc' => ['nullable', 'string'],
             'parent' => ['nullable', 'exists:categories,id'],
-        ];
+        ], $conditionalValidation);
     }
 }

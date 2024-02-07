@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>Create Category</h2>
+                    <h2>{{ data ? 'Edit' : 'Create' }} Category</h2>
 
                     <button class="btn btn-icon" @click="closeModal">
                         <font-awesome-icon icon="close" />
@@ -28,9 +28,9 @@
                         </el-form-item>
                         
                         <button type="submit" :class="['btn btn-lg btn-primary de-submit', loading ? 'de-submit--loading' : '']">
-                            <span>Create Category</span>
+                            <span>{{ data ? 'Edit' : 'Create' }} Category</span>
                             <font-awesome-icon :icon="loading ? 'spinner' : 'arrow-right-long'" />
-                        </button>``
+                        </button>
                     </el-form>
                 </div>
             </div>
@@ -48,7 +48,7 @@ export default {
     name: "CategoryModal",
     props: {
         categories: Array as PropType<Category[]>,
-        data: Object as PropType<any>,
+        data: Object as PropType<Category | null>,
     },
     emits: ['create', 'edit'],
     setup: (props, { emit }) => {
@@ -63,25 +63,43 @@ export default {
             parent: null,
         });
 
-        watch(() => formData.value.name, () => formData.value.slug = formData.value.name ? slugify(formData.value.name) : null);
+        watch(
+            () => formData.value.name,
+            () => formData.value.slug = formData.value.name ? slugify(formData.value.name) : null
+        );
+
+        watch(
+            () => props.data,
+            () => formData.value = props.data ? {...props.data} : clearForm(formData.value)
+        );
 
         const closeModal = () => {
             formData.value = clearForm(formData.value);
+            loading.value = false;
+            errors.value = [];
             hideModal(modalRef.value);
         }
 
-        const onSubmit = () => {
-            loading.value = true;
-            errors.value = [];
-            
-            axios.post('/admin/blog/categories', formData.value).then(res => {
-                emit('create', res.data.data);
+        const onSubmit = async () => {
+            try {
+                let res = null;
+                loading.value = true;
+                errors.value = [];
+
+                res = props.data ?
+                await axios.put(`/admin/blog/categories/${props.data.id}`, formData.value) :
+                await axios.post(`/admin/blog/categories`, formData.value);
+                console.log(res.data.data);
+                
+                emit(props.data ? 'edit' : 'create', res.data.data);
                 closeModal();
-            }).catch(e => {
-                console.error(e.response.data);
-                errors.value = e.response.data.errors ?? [];
+                
+            } catch (error: any) {
+                console.error(error);
+                console.error(error.response.data);
+                errors.value = error.response.data.errors ?? [];
                 loading.value = false;
-            });
+            }
         }
 
         return {

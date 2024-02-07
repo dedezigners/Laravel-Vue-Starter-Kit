@@ -28,6 +28,13 @@ class CategoryController extends Controller
         ]));
         return new CategoryResource($category);
     }
+    
+    public function update(CategoryRequest $request, Category $category)
+    {
+        $data = $request->only('name', 'slug', 'parent', 'desc');
+        $category->update($data);
+        return new CategoryResource($category);
+    }
 
     public function destroy(Category $category)
     {
