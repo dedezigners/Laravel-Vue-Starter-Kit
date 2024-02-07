@@ -91,7 +91,7 @@ export default {
                 res = props.data ?
                 await axios.put(`/admin/blog/categories/${props.data.id}`, formData.value) :
                 await axios.post(`/admin/blog/categories`, formData.value);
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 
                 emit(props.data ? 'edit' : 'create', res.data.data);
                 closeModal();
