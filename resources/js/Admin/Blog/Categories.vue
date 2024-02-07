@@ -19,7 +19,7 @@
         </div>
 
         <div class="de-card de-card__body">
-            <DeDatatable :header="tableHead" :data="showTrashed ? trashedCategories.data : categories.data">
+            <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
                 <template v-slot:actions="{ data: item }">
                     <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-secondary me-2" @click="onEditSelect(item.id)">
                         <font-awesome-icon icon="pen-to-square" />
@@ -39,15 +39,16 @@
         </div>
     </admin-layout>
 
-    <CategoryModal :categories="categories.data" :data="editData" @create="onCreate" @edit="onEdit" />
+    <CategoryModal :categories="activeData"
+    :loading="loading" :errors="errors" :data="editData"
+    :close-modal="closeModal" :submit-form="onSubmit" :set-modal-ref="setModalRef" />
 </template>
 
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { Category, DeTableHead } from '@/core/type';
-import { ElMessageBox } from 'element-plus';
+import { DeTableHead } from '@/core/type';
 import CategoryModal from '@/components/modals/blog/CategoryModal.vue';
-import axios from 'axios';
+import { useCrud } from '@/core/crud';
 
 export default {
     name: 'Categories',
@@ -59,9 +60,6 @@ export default {
     },
     components: { CategoryModal },
     setup: (props) => {
-        const modalButtonRef = ref<HTMLElement | null>(null);
-        const showTrashed = ref(false);
-        const editData = ref<Category | null>(null);
         const tableHead = ref<DeTableHead[]>([
             { label: "ID", name: "id", sort: true },
             { label: "Name", name: "name", sort: true },
@@ -70,76 +68,37 @@ export default {
             { label: "Actions", name: "actions", sort: false, class: 'text-end', },
         ]);
 
-        const onEditSelect = (id: number) => {
-            const data = props.categories.data.find((c: { id: number }) => c.id === id);
-            modalButtonRef.value?.click();
-            editData.value = data;
-        }
-
-        const onCreate = (item: any) => {
-            props.categories.data.unshift(item);
-        }
-        
-        const onEdit = (item: any) => {
-            const rowIndex = props.categories.data.findIndex((c: { id: number }) => c.id === editData.value?.id);
-            props.categories.data.splice(rowIndex, 1);
-            props.categories.data.unshift(item);
-        }
-
-        const onDelete = (id: number) => {
-            ElMessageBox.confirm(
-                'Are you sure! you want to delete this item?',
-                'Confirm delete?',
-                {
-                    type: 'warning',
-                    confirmButtonText: 'Yes Delete',
-                    confirmButtonClass: 'btn btn-danger',
-                    cancelButtonClass: 'btn btn-secondary',
-                    cancelButtonText: 'Cancel',
-                }
-            ).then(() => {
-                const rowIndex = props.categories.data.findIndex((c: { id: number }) => c.id === id);
-                axios.delete(`/admin/blog/categories/${id}`);
-
-                props.trashedCategories.data.push(props.categories.data[rowIndex]);
-                props.categories.data.splice(rowIndex, 1);
-            }).catch(() => {});
-        }
-
-        const onRestore = (id: number) => {
-            const rowIndex = props.trashedCategories.data.findIndex((c: { id: number }) => c.id === id);
-            axios.put(`/admin/blog/categories/${id}`);
-
-            props.categories.data.unshift(props.trashedCategories.data[rowIndex]);
-            props.trashedCategories.data.splice(rowIndex, 1);
-        }
-
-        const onPermanent = (id: number) => {
-            ElMessageBox.confirm(
-                'Are you sure! you want to delete this item, this cannot be undo?',
-                'Confirm delete?',
-                {
-                    type: 'warning',
-                    confirmButtonText: 'Yes Delete',
-                    confirmButtonClass: 'btn btn-danger',
-                    cancelButtonClass: 'btn btn-secondary',
-                    cancelButtonText: 'Cancel',
-                }
-            ).then(() => {
-                const rowIndex = props.trashedCategories.data.findIndex( (c: {id: number}) => c.id === id);
-                axios.delete(`/admin/blog/categories/${id}/permanent`).then(res => {
-                    console.log(res.data);
-                });
-
-                props.trashedCategories.data.splice(rowIndex, 1);
-            }).catch(() => {});
-        }
+        const {
+            loading,
+            errors,
+            activeData,
+            trashedData,
+            showTrashed,
+            editData,
+            modalButtonRef,
+            closeModal,
+            onSubmit,
+            setModalRef,
+            onEditSelect,
+            onCreate,
+            onEdit,
+            onDelete,
+            onRestore,
+            onPermanent,
+        } = useCrud('/admin/blog/categories', props.categories.data, props.trashedCategories.data);
 
         return {
+            loading,
+            errors,
+            activeData,
+            trashedData,
             showTrashed,
             editData,
             tableHead,
             modalButtonRef,
+            closeModal,
+            onSubmit,
+            setModalRef,
             onEditSelect,
             onCreate,
             onEdit,
