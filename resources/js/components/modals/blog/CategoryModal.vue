@@ -65,7 +65,9 @@ export default {
 
         watch(
             () => formData.value.name,
-            () => formData.value.slug = formData.value.name ? slugify(formData.value.name) : null
+            () => {
+                if (!props.data) formData.value.slug = formData.value.name ? slugify(formData.value.name) : null
+            }
         );
 
         watch(
