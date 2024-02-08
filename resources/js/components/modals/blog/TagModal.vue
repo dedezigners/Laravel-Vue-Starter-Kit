@@ -35,13 +35,13 @@
 
 <script lang="ts">
 import { clearForm, slugify } from '@/core/helper';
-import { Tag } from '@/core/type';
+import { BlogTag } from '@/core/type';
 import { PropType, ref, watch } from 'vue';
 
 export default {
     name: "TagModal",
     props: {
-        data: Object as PropType<Tag | null>,
+        data: Object as PropType<BlogTag | null>,
         loading: {type: Boolean, default: false},
         submitForm: {type: Function, default: () => {}},
         closeModal: {type: Function, default: () => {}},

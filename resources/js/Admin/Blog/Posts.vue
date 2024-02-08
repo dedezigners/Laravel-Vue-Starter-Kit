@@ -1,24 +1,105 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <div class="de-card de-card__header">
-            <h3 class="de-card__header--title">Blog Posts</h3>
-            
+            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }}Posts</h3>
+
             <div class="de-card__actions">
-                <Link class="btn btn-primary-outline" href="/admin/blog/posts/create">Create Post</Link>
+                <Link class="btn btn-primary" href="/admin/blog/posts/create">Create Post</Link>
             </div>
         </div>
+
+        <div class="de-card de-card__info">
+            <button :class="['btn btn-sm', showTrashed ? 'btn-secondary' : 'btn-outline-secondary']"
+            @click="showTrashed = !showTrashed">
+                Show {{ showTrashed ? 'Active' : 'Trashed' }}
+            </button>
+        </div>
+
+        <div class="de-card de-card__body">
+            <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
+                <template v-slot:actions="{ data: item }">
+                    <Link v-if="!showTrashed" :href="`/admin/blog/posts/${item.id}/edit`"
+                    class="btn btn-icon btn-sm btn-outline-secondary me-2">
+                        <font-awesome-icon icon="pen-to-square" />
+                    </Link>
+                    <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-danger" @click="onDelete(item.id)">
+                        <font-awesome-icon icon="trash" />
+                    </button>
+                    <button v-if="showTrashed" class="btn btn-icon btn-sm btn-outline-success me-2"
+                        @click="onRestore(item.id)">
+                        <font-awesome-icon icon="arrow-rotate-left" />
+                    </button>
+                    <button v-if="showTrashed" class="btn btn-icon btn-sm btn-danger" @click="onPermanent(item.id)">
+                        <font-awesome-icon icon="trash-can" />
+                    </button>
+                </template>
+            </DeDatatable>
+        </div>
     </admin-layout>
+
+    <DeModal :loading="loading" :errors="errors" :data="editData"
+    :close-modal="closeModal" :submit-form="onSubmit" :set-modal-ref="setModalRef" />
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue';
+import { PropType, ref } from 'vue';
+import { DeTableHead, Post, Resource } from '@/core/type';
+import { useCrud } from '@/core/crud';
 
 export default {
-    name: 'Posts',
+    name: 'BlogPosts',
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,
+        posts: Object as PropType<Resource<Post[]>>,
+        trashedPosts: Object as PropType<Resource<Post[]>>,
     },
-    setup: (props) => {}
+    setup: (props) => {
+        const tableHead = ref<DeTableHead[]>([
+            { label: "ID", name: "id", sort: true },
+            { label: "Name", name: "name", sort: true },
+            { label: "Slug", name: "slug", sort: false },
+            { label: "Actions", name: "actions", sort: false, class: 'text-end', },
+        ]);
+
+        const {
+            loading,
+            errors,
+            activeData,
+            trashedData,
+            showTrashed,
+            editData,
+            modalButtonRef,
+            closeModal,
+            onSubmit,
+            setModalRef,
+            onEditSelect,
+            onCreate,
+            onEdit,
+            onDelete,
+            onRestore,
+            onPermanent,
+        } = useCrud('/admin/blog/posts', props.posts?.data, props.trashedPosts?.data);
+
+        return {
+            loading,
+            errors,
+            activeData,
+            trashedData,
+            showTrashed,
+            editData,
+            tableHead,
+            modalButtonRef,
+            closeModal,
+            onSubmit,
+            setModalRef,
+            onEditSelect,
+            onCreate,
+            onEdit,
+            onDelete,
+            onRestore,
+            onPermanent,
+        }
+    }
 }
 </script>

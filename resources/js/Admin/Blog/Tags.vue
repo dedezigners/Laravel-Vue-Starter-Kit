@@ -1,7 +1,7 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <div class="de-card de-card__header">
-            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }} Tags</h3>
+            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }}Tags</h3>
 
             <div class="de-card__actions">
                 <button class="btn btn-primary" ref="modalButtonRef"
@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { DeTableHead } from '@/core/type';
+import { BlogTag, DeTableHead, Resource } from '@/core/type';
 import DeModal from '@/components/modals/blog/TagModal.vue';
 import { useCrud } from '@/core/crud';
 
@@ -54,8 +54,8 @@ export default {
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,
-        tags: Object as PropType<any>,
-        trashedTags: Object as PropType<any>,
+        tags: Object as PropType<Resource<BlogTag[]>>,
+        trashedTags: Object as PropType<Resource<BlogTag[]>>,
     },
     components: { DeModal },
     setup: (props) => {
@@ -83,7 +83,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud('/admin/blog/tags', props.tags.data, props.trashedTags.data);
+        } = useCrud('/admin/blog/tags', props.tags?.data, props.trashedTags?.data);
 
         return {
             loading,

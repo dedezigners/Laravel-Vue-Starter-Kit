@@ -1,7 +1,7 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <div class="de-card de-card__header">
-            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }} Categories</h3>
+            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }}Categories</h3>
 
             <div class="de-card__actions">
                 <button class="btn btn-primary" ref="modalButtonRef"
@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { DeTableHead } from '@/core/type';
+import { BlogCategory, DeTableHead, Resource } from '@/core/type';
 import CategoryModal from '@/components/modals/blog/CategoryModal.vue';
 import { useCrud } from '@/core/crud';
 
@@ -55,8 +55,8 @@ export default {
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,
-        categories: Object as PropType<any>,
-        trashedCategories: Object as PropType<any>,
+        categories: Object as PropType<Resource<BlogCategory[]>>,
+        trashedCategories: Object as PropType<Resource<BlogCategory[]>>,
     },
     components: { CategoryModal },
     setup: (props) => {
@@ -85,7 +85,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud('/admin/blog/categories', props.categories.data, props.trashedCategories.data);
+        } = useCrud('/admin/blog/categories', props.categories?.data, props.trashedCategories?.data);
 
         return {
             loading,

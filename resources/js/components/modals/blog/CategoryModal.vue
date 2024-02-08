@@ -40,14 +40,14 @@
 
 <script lang="ts">
 import { clearForm, slugify } from '@/core/helper';
-import { Category } from '@/core/type';
+import { BlogCategory } from '@/core/type';
 import { PropType, ref, watch } from 'vue';
 
 export default {
     name: "CategoryModal",
     props: {
-        categories: Array as PropType<Category[]>,
-        data: Object as PropType<Category | null>,
+        categories: Array as PropType<BlogCategory[]>,
+        data: Object as PropType<BlogCategory | null>,
         loading: {type: Boolean, default: false},
         submitForm: {type: Function, default: () => {}},
         closeModal: {type: Function, default: () => {}},

@@ -7,13 +7,15 @@
 </template>
 
 <script lang="ts">
+import { Post, Resource } from '@/core/type';
 import { PropType } from 'vue';
 
 export default {
-    name: 'CreatePost',
+    name: 'PostForm',
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,
+        post: Object as PropType<Resource<Post>>,
     },
     setup: (props) => {}
 }

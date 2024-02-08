@@ -51,6 +51,10 @@ Route::middleware('auth')->group(function () {
             Route::apiResource('tags', TagController::class)->except('show');
             Route::put('tags/{id}/restore', [TagController::class, 'restore']);
             Route::delete('tags/{id}/permanent', [TagController::class, 'permanentDelete']);
+            
+            Route::resource('posts', PostController::class)->except('show');
+            Route::put('posts/{id}/restore', [PostController::class, 'restore']);
+            Route::delete('posts/{id}/permanent', [PostController::class, 'permanentDelete']);
         });
     });
 });

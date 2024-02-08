@@ -28,7 +28,11 @@ export interface DeTableHead {
     class?: string,
 }
 
-export interface Category {
+export interface Resource<T> {
+    data: T,
+}
+
+export interface BlogCategory {
     id: number,
     icon: string | null,
     name: string,
@@ -38,10 +42,18 @@ export interface Category {
     created_at: string,
 }
 
-export interface Tag {
+export interface BlogTag {
     id: number,
     name: string,
     slug: string,
     desc: string | null,
     created_at: string,
+}
+
+export interface Post {
+    id: number,
+    image: string,
+    title: string,
+    slug: string,
+    desc: string | null,
 }
