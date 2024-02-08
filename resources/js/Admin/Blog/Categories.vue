@@ -18,7 +18,7 @@
             </button>
         </div>
 
-        <div class="de-card de-card__body">
+        <div class="de-card de-card__table">
             <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
                 <template v-slot:actions="{ data: item }">
                     <button v-if="!showTrashed" class="btn btn-icon btn-sm btn-outline-secondary me-2" @click="onEditSelect(item.id)">
@@ -49,6 +49,7 @@ import { PropType, ref } from 'vue';
 import { BlogCategory, DeTableHead, Resource } from '@/core/type';
 import CategoryModal from '@/components/modals/blog/CategoryModal.vue';
 import { useCrud } from '@/core/crud';
+import { RoutePath } from '@/core/route-path';
 
 export default {
     name: 'BlogCategories',
@@ -85,7 +86,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud('/admin/blog/categories', props.categories?.data, props.trashedCategories?.data);
+        } = useCrud(RoutePath.blog.categories, props.categories?.data, props.trashedCategories?.data);
 
         return {
             loading,

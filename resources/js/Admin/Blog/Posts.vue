@@ -15,7 +15,7 @@
             </button>
         </div>
 
-        <div class="de-card de-card__body">
+        <div class="de-card de-card__table">
             <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
                 <template v-slot:actions="{ data: item }">
                     <Link v-if="!showTrashed" :href="`/admin/blog/posts/${item.id}/edit`"
@@ -36,15 +36,13 @@
             </DeDatatable>
         </div>
     </admin-layout>
-
-    <DeModal :loading="loading" :errors="errors" :data="editData"
-    :close-modal="closeModal" :submit-form="onSubmit" :set-modal-ref="setModalRef" />
 </template>
 
 <script lang="ts">
 import { PropType, ref } from 'vue';
 import { DeTableHead, Post, Resource } from '@/core/type';
 import { useCrud } from '@/core/crud';
+import { RoutePath } from '@/core/route-path';
 
 export default {
     name: 'BlogPosts',
@@ -63,39 +61,19 @@ export default {
         ]);
 
         const {
-            loading,
-            errors,
             activeData,
             trashedData,
             showTrashed,
-            editData,
-            modalButtonRef,
-            closeModal,
-            onSubmit,
-            setModalRef,
-            onEditSelect,
-            onCreate,
-            onEdit,
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud('/admin/blog/posts', props.posts?.data, props.trashedPosts?.data);
+        } = useCrud(RoutePath.blog.posts, props.posts?.data, props.trashedPosts?.data);
 
         return {
-            loading,
-            errors,
             activeData,
             trashedData,
             showTrashed,
-            editData,
             tableHead,
-            modalButtonRef,
-            closeModal,
-            onSubmit,
-            setModalRef,
-            onEditSelect,
-            onCreate,
-            onEdit,
             onDelete,
             onRestore,
             onPermanent,

@@ -51,9 +51,12 @@ export interface BlogTag {
 }
 
 export interface Post {
-    id: number,
-    image: string,
-    title: string,
-    slug: string,
-    desc: string | null,
+    id?: number | null,
+    image?: string | null,
+    title?: string | null,
+    slug?: string | null,
+    category_id?: any,
+    tag_ids?: [],
+    excerpt?: string | null,
+    content?: string,
 }

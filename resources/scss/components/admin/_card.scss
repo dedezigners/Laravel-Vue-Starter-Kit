@@ -35,6 +35,14 @@
         }
     }
 
+    &__body {
+        padding: ($padding-x * 2) $padding-y;
+    }
+    
+    &__table {
+        padding: 2px;
+    }
+
     &__info {
         display: flex;
         justify-content: flex-end;

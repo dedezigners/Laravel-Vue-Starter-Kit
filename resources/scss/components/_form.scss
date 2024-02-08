@@ -4,6 +4,19 @@
             color: $black;
             margin-bottom: 4px !important;
         }
+
+        .el-input__wrapper,
+        .el-select__wrapper,
+        .el-textarea__inner {
+            border-radius: $form-radius;
+            padding: $default-padding-x $default-padding-y;
+            box-shadow: 0 0 0 1px $form-border-color inset;
+        }
+
+        .el-input__wrapper > .el-input__inner {
+            line-height: 24px;
+            height: 24px;
+        }
     }
     
     // .el-select__placeholder,
@@ -20,4 +33,24 @@
             line-height: $desktop-lineheight;
         }
     }
+
+    .ck {
+        &-editor {
+            width: 100% !important;
+
+            &__editable {
+                min-height: 200px;
+            }
+            
+            &.ck-focused {
+                border: red !important;
+            }
+        }
+        
+        &.ck-editor.ck-focused {
+            border-color: red !important;
+        }
+    }
+
+
 }
