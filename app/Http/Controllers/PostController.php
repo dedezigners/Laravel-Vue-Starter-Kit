@@ -46,6 +46,7 @@ class PostController extends Controller
         if ($image) $data['image'] = $image;
         
         $post = Post::create($data);
+        if ($data['tag_ids']) $post->tags()->sync($data['tag_ids']);
         return new PostResource($post);
     }
     
@@ -65,6 +66,9 @@ class PostController extends Controller
     {
         $data = $request->only('title', 'slug', 'category_id', 'tag_ids', 'excerpt', 'content', 'image');
         $post->update($data);
+
+        if ($data['tag_ids']) $post->tags()->sync($data['tag_ids']);
+        else $post->tags()->sync([]);
         
         return new PostResource($post);
     }

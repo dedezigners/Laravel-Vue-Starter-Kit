@@ -21,6 +21,10 @@
                 <template v-slot:thumb="{ data: item }">
                     <img :src="item.thumb" :alt="item.title">
                 </template>
+                <template v-slot:tags="{ data: item }">
+                    <span v-if="!item.tags.length">&mdash;</span>
+                    <span v-for="tag in item.tags" class="badge bg-secondary rounded-0 me-2">{{ tag.name }}</span>
+                </template>
 
                 <template v-slot:actions="{ data: item }">
                     <Link v-if="!showTrashed" :href="`/admin/blog/posts/${item.id}/edit`"
@@ -65,6 +69,7 @@ export default {
             { label: "Title", name: "title", sort: true },
             { label: "Slug", name: "slug", sort: false },
             { label: "Category", name: "category.name", sort: true },
+            { label: "Tags", name: "tags", sort: true },
             { label: "Actions", name: "actions", sort: false, class: 'text-end', },
         ]);
 
