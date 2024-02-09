@@ -41,9 +41,9 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
-        $image = $this->saveFile($request, 'posts', 'slug');
-        $data = array_merge($data, $image);
         $data['user_id'] = auth()->id();
+        $image = $this->saveFile($request, 'posts', $request->slug);
+        if ($image) $data['image'] = $image;
         
         $post = Post::create($data);
         return new PostResource($post);
@@ -63,7 +63,7 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
-        $data = $request->only('title', 'slug', 'category_id', 'tag_ids', 'excerpt', 'content');
+        $data = $request->only('title', 'slug', 'category_id', 'tag_ids', 'excerpt', 'content', 'image');
         $post->update($data);
         
         return new PostResource($post);

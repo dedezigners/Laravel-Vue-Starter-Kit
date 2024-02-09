@@ -25,6 +25,7 @@ class PostRequest extends FormRequest
     {
         if ($this->method() === 'PUT') {
             $conditionalValidation = [
+                'image' => ['nullable', 'string'],
                 'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', Rule::unique(Post::class)->ignore($this->post->id)],
             ];
         } else {

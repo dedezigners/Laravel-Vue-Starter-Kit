@@ -78,7 +78,10 @@ export default {
             props.closeModal();
         }
 
-        const onSubmit = () => props.submitForm(formData.value, props.data !== null);
+        const onSubmit = async () => {
+            const res = await props.submitForm(formData.value, props.data !== null);
+            if (res) formData.value = clearForm(formData.value);
+        }
 
         return {
             modalRef,

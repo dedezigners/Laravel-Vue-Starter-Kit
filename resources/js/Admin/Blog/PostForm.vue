@@ -6,7 +6,9 @@
 
         <div class="de-card de-card__body">
             <el-form class="de-form row" label-position="top" @submit.prevent="onSubmit">
-                <FormUpload v-model="formData.image" :preview="post ? post.data.thumb : null"
+                <FormUpload v-model="formData.image"
+                type="posts" :filename="post?.data.slug"
+                :preview="post?.data.thumb"
                 :error="errors['image'] ? errors['image'][0] : null" />
 
                 <el-form-item class="col-lg-6" label="Post Title" :error="errors['title'] ? errors['title'][0] : null">
@@ -77,15 +79,13 @@ export default {
         const ckEditor = ref(ClassicEditor);
         const formData = ref<Post>({});
 
-        watch(() => formData.value?.title, () => {
-            formData.value.slug = formData.value.title ? slugify(formData.value.title) : null;
+        watch(() => formData.value.title, () => {
+            formData.value.slug = formData.value.title ? slugify(formData.value.title) : '';
         });
 
         watch(() => props.post?.data, () => {
             if (props.post) {
                 formData.value = props.post.data;
-                console.log(formData.value);
-                
                 formData.value.content = formData.value.content ?? '';
             }
         }, { immediate: true });
@@ -103,7 +103,7 @@ export default {
                     }
                 });
                 
-                router.replace(RoutePath.blog.posts);
+                router.get(RoutePath.blog.posts);
             } catch (error: any) {
                 console.error(error.message);
                 console.error(error.response.data);

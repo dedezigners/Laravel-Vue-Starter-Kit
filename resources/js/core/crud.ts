@@ -92,12 +92,15 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
                 activeData.unshift(res.data.data);
             } else activeData.unshift(res.data.data);
             closeModal();
+            return true;
             
         } catch (error: any) {
             console.error(error.message);
             console.error(error.response.data);
             errors.value = error.response.data.errors ?? [];
             loading.value = false;
+
+            return false;
         }
     }
 

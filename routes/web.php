@@ -36,6 +36,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::any('logout', [AuthController::class, 'destroy'])->name('logout');
     Route::get('dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
+    Route::post('upload-image', [FrontendController::class, 'uploadImage']);
     
     // Admin Routes
     Route::redirect('admin', 'admin/dashboard');
