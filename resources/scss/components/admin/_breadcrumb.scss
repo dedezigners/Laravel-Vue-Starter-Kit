@@ -1,5 +1,5 @@
 .de-breadcrumb {
-    padding: $padding-x $padding-y;
+    padding: $padding-x calc($padding-y * 1.5);
     
     &--title {
         margin-bottom: 5px;

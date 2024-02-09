@@ -13,7 +13,12 @@ body.de-splash {
             #042460 90.2%);
 }
 
+body.de-splash .de-splash__content{
+    display: block;
+}
+
 .de-splash__content {
+    display: none;
     text-align: center;
 }
 

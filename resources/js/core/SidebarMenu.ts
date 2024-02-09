@@ -19,11 +19,23 @@ const menu: Menu[] = [
         is_active: false,
         pages: [
             {
-                name: "Dashboard",
-                route: '/dashboard',
-                icon: 'house',
+                name: "Users",
+                route: '/users',
+                icon: 'user-group',
                 is_active: false,
-            }
+            },
+            {
+                name: "Roles",
+                route: '/users',
+                icon: 'user-gear',
+                is_active: false,
+            },
+            {
+                name: "Permissions",
+                route: '/users',
+                icon: 'user-lock',
+                is_active: false,
+            },
         ]
     },
     {

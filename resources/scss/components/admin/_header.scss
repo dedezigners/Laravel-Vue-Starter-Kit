@@ -1,5 +1,6 @@
 .de-header {
-    position: relative;
+    position: fixed;
+    width: 100vw;
     z-index: 1;
     background-color: $white;
     height: $desktop-header-height;
@@ -8,6 +9,7 @@
     @include transition;
 
     @media ($desktop-screen) {
+        width: calc(100vw - $desktop-sidebar-width);
         margin-left: $desktop-sidebar-width;
     }
 

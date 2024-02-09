@@ -17,6 +17,11 @@
 
         <div class="de-card de-card__table">
             <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
+                
+                <template v-slot:thumb="{ data: item }">
+                    <img :src="item.thumb" :alt="item.title">
+                </template>
+
                 <template v-slot:actions="{ data: item }">
                     <Link v-if="!showTrashed" :href="`/admin/blog/posts/${item.id}/edit`"
                     class="btn btn-icon btn-sm btn-outline-secondary me-2">
@@ -33,6 +38,7 @@
                         <font-awesome-icon icon="trash-can" />
                     </button>
                 </template>
+                
             </DeDatatable>
         </div>
     </admin-layout>
@@ -55,8 +61,10 @@ export default {
     setup: (props) => {
         const tableHead = ref<DeTableHead[]>([
             { label: "ID", name: "id", sort: true },
-            { label: "Name", name: "name", sort: true },
+            { label: "Image", name: "thumb", sort: false },
+            { label: "Title", name: "title", sort: true },
             { label: "Slug", name: "slug", sort: false },
+            { label: "Category", name: "category.name", sort: true },
             { label: "Actions", name: "actions", sort: false, class: 'text-end', },
         ]);
 

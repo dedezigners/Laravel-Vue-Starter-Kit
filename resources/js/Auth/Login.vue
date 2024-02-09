@@ -1,6 +1,6 @@
 <template>
     <guest-layout>
-        <el-form class="de-auth__form" label-position="top">
+        <el-form class="de-auth__form" label-position="top" @submit.prevent="onSubmit">
             <h3 class="de-auth__form--title">Login</h3>
             <el-form-item label="Email or Username" :error="errors['identity'] ? errors['identity'][0] : null">
                 <el-input v-model="formData.identity"
@@ -19,7 +19,7 @@
     
             <div v-if="errors.message" class="alert alert-danger p-2">{{ errors.message }}</div>
     
-            <el-button type="default" @click="onSubmit">Login</el-button>
+            <button type="submit" class="btn btn-primary">Login</button>
             <p class="de-auth__form--message">Don't have an account? <Link href="/register">Register Here</Link></p>
         </el-form>
     </guest-layout>

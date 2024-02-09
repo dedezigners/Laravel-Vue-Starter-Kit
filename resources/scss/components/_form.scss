@@ -1,56 +1,63 @@
+textarea::placeholder,
+input::placeholder {
+    font-size: $default-fontsize;
+    line-height: $default-lineheight;
+    font-weight: 300;
+    color: $light-text !important;
+    opacity: 0.85 !important;
+
+    @media ($desktop-screen) {
+        font-size: $desktop-fontsize;
+        line-height: $desktop-lineheight;
+    }
+}
+
 .de-form {
-    .el-form-item {
-        .el-form-item__label {
-            color: $black;
-            margin-bottom: 4px !important;
-        }
+    &__upload {
+        display: flex;
+        align-items: center;
+        gap: calc($padding-x * 2);
+        margin-bottom: $padding-y;
 
-        .el-input__wrapper,
-        .el-select__wrapper,
-        .el-textarea__inner {
-            border-radius: $form-radius;
-            padding: $default-padding-x $default-padding-y;
-            box-shadow: 0 0 0 1px $form-border-color inset;
-        }
+        &--avatar {
+            min-width: 60px;
+            height: 60px;
+            background-color: $light-color;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            @include shadow;
 
-        .el-input__wrapper > .el-input__inner {
-            line-height: 24px;
-            height: 24px;
-        }
-    }
-    
-    // .el-select__placeholder,
-    textarea::placeholder,
-    input::placeholder {
-        font-size: $default-fontsize;
-        line-height: $default-lineheight;
-        font-weight: 300;
-        color: $light-text !important;
-        opacity: 0.85 !important;
-
-        @media ($desktop-screen) {
-            font-size: $desktop-fontsize;
-            line-height: $desktop-lineheight;
-        }
-    }
-
-    .ck {
-        &-editor {
-            width: 100% !important;
-
-            &__editable {
-                min-height: 200px;
+            img {
+                width: auto;
+                max-height: 60px;
             }
-            
-            &.ck-focused {
-                border: red !important;
+
+            .svg-inline--fa {
+                height: 1.8rem;
+                opacity: 0.325;
             }
         }
-        
-        &.ck-editor.ck-focused {
-            border-color: red !important;
+
+        &--content {
+            h6 {
+                font-size: 12px;
+                line-height: 18px;
+                color: $black;
+            }
+
+            span {
+                font-size: 10px;
+                line-height: 12px;
+                color: $light-text;
+            }
+        }
+
+        .btn {
+            text-transform: uppercase;
+            font-size: 12px;
+            padding-left: $padding-x;
+            padding-right: $padding-x;
         }
     }
-
-
 }

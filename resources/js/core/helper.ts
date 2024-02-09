@@ -1,6 +1,6 @@
 import { Modal } from "bootstrap";
 
-export const slugify = (str: String): String => {
+export const slugify = (str: string): string => {
     return String(str)
         .normalize('NFKD')
         .replace(/[\u0300-\u036f]/g, '')

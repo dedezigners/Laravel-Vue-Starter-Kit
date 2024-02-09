@@ -18,6 +18,7 @@
         @include transition;
         
         @media ($desktop-screen) {
+            margin-top: $desktop-header-height;
             margin-left: $desktop-sidebar-width;
         }
 
@@ -27,7 +28,7 @@
     }
 
     &__content {
-        padding: $padding-x $padding-y;
+        padding: $padding-x calc($padding-y * 1.5);
         flex-grow: 1;
     }
 

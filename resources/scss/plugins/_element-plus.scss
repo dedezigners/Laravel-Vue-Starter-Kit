@@ -1,0 +1,19 @@
+.el-form-item {
+    .el-form-item__label {
+        color: $black;
+        margin-bottom: 4px !important;
+    }
+
+    .el-input__wrapper,
+    .el-select__wrapper,
+    .el-textarea__inner {
+        border-radius: $form-radius;
+        padding: $default-padding-x $default-padding-y;
+        box-shadow: 0 0 0 1px $form-border-color inset;
+    }
+
+    .el-input__wrapper > .el-input__inner {
+        line-height: 24px;
+        height: 24px;
+    }
+}

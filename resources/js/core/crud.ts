@@ -1,14 +1,13 @@
-import { ref } from "vue";
-import { Category } from "./type";
-import { ElMessageBox } from "element-plus";
 import axios from "axios";
+import { ref } from "vue";
+import { ElMessageBox } from "element-plus";
 import { hideModal } from "./helper";
 
 export const useCrud = (endPoint: string, activeData: any, trashedData: any) => {
     // Datatable
     const modalButtonRef = ref<HTMLElement | null>(null);
     const showTrashed = ref(false);
-    const editData = ref<Category | null>(null);
+    const editData = ref<any | null>(null);
 
     // Modal
     const modalRef = ref<HTMLElement | null>(null);
@@ -19,14 +18,6 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
         const data = activeData.find((c: { id: number }) => c.id === id);
         modalButtonRef.value?.click();
         editData.value = data;
-    }
-
-    const onCreate = (item: any) => {
-        
-    }
-    
-    const onEdit = (item: any) => {
-        
     }
 
     const onDelete = (id: number) => {
@@ -124,8 +115,6 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
         onSubmit,
         setModalRef,
         onEditSelect,
-        onCreate,
-        onEdit,
         onDelete,
         onRestore,
         onPermanent,

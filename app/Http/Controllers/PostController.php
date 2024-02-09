@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Trait\FileUploadTrait;
 use App\Http\Requests\Blog\PostRequest;
 use App\Http\Resources\Blog\CategoryResource;
 use App\Http\Resources\Blog\PostResource;
@@ -14,6 +15,8 @@ use Inertia\Inertia;
 
 class PostController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
         $posts = Post::latest()->get();
@@ -38,7 +41,12 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
-        return $data;
+        $image = $this->saveFile($request, 'posts', 'slug');
+        $data = array_merge($data, $image);
+        $data['user_id'] = auth()->id();
+        
+        $post = Post::create($data);
+        return new PostResource($post);
     }
     
     public function edit(Post $post)
@@ -55,8 +63,10 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
-        $data = $request->all();
-        return $data;
+        $data = $request->only('title', 'slug', 'category_id', 'tag_ids', 'excerpt', 'content');
+        $post->update($data);
+        
+        return new PostResource($post);
     }
 
     public function destroy(Post $post)

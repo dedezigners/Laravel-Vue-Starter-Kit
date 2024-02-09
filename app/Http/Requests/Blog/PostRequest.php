@@ -29,6 +29,7 @@ class PostRequest extends FormRequest
             ];
         } else {
             $conditionalValidation = [
+                'image' => ['required', 'image'],
                 'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', Rule::unique(Post::class)],
             ];
         }

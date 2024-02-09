@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('image')->nullable();
-            $table->string('video')->nullable();
+            $table->string('image');
+            $table->text('excerpt');
             $table->text('content')->nullable();
             
             $table->foreignId('category_id')->constrained();
