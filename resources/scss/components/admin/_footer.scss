@@ -1,9 +1,11 @@
 .de-footer {
     display: flex;
+    color: $text-color;
     align-items: center;
+    flex-direction: column;
+    background-color: transparent;
     justify-content: space-between;
     padding: $padding-x $padding-y;
-    flex-direction: column;
 
     @media ($desktop-screen) {
         flex-direction: row;

@@ -10,9 +10,9 @@ import { Tooltip } from "bootstrap";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowDownLong, faArrowLeft, faArrowRightLong, faArrowRotateLeft, faBars, faCaretDown, faCaretUp, faCartShopping, faCircleExclamation, faClose, faDolly, faHouse, faImage, faLayerGroup, faMinus, faNewspaper, faPaperPlane, faPenToSquare, faSearch, faSpinner, faTags, faTrash, faTrashCan, faUserGear, faUserGroup, faUserLock } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDownLong, faArrowLeft, faArrowRightLong, faArrowRotateLeft, faBars, faCaretDown, faCaretUp, faCartShopping, faCircleExclamation, faClose, faDolly, faEnvelope, faHouse, faImage, faLayerGroup, faLocation, faLocationDot, faMinus, faNewspaper, faPaperPlane, faPenToSquare, faSearch, faSpinner, faTags, faTrash, faTrashCan, faUser, faUserGear, faUserGroup, faUserLock } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper, faArrowLeft, faPaperPlane, faClose, faArrowRightLong, faArrowDownLong, faPenToSquare, faSpinner, faTrash, faArrowRotateLeft, faTrashCan, faUserGroup, faUserGear, faUserLock, faImage, faCircleExclamation);
+library.add(faBars, faSearch, faCaretDown, faCaretUp, faHouse, faMinus, faDolly, faLayerGroup, faCartShopping, faTags, faNewspaper, faArrowLeft, faPaperPlane, faClose, faArrowRightLong, faArrowDownLong, faPenToSquare, faSpinner, faTrash, faArrowRotateLeft, faTrashCan, faUserGroup, faUserGear, faUserLock, faImage, faCircleExclamation, faUser, faEnvelope, faLocationDot);
 
 // Layouts
 import GuestLayout from '@/layouts/GuestLayout.vue';

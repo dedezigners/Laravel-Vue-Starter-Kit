@@ -1,5 +1,9 @@
 .de-breadcrumb {
-    padding: $padding-x calc($padding-y * 1.5);
+    padding: $padding-x calc($padding-y * 0.5);
+
+    @media ($desktop-screen) {
+        padding: $padding-x calc($padding-y * 1.5);
+    }
     
     &--title {
         margin-bottom: 5px;

@@ -1,7 +1,10 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <div class="de-card de-card__header">
-            <h3 class="de-card__header--title">{{ showTrashed ? 'Trashed ' : '' }}Tags</h3>
+            <h3 class="de-card--title">
+                <span v-if="showTrashed" class="me-1">Trashed</span>
+                <span>Tags</span>
+            </h3>
 
             <div class="de-card__actions">
                 <button class="btn btn-primary" ref="modalButtonRef"
@@ -11,12 +14,14 @@
             </div>
         </div>
 
-        <div class="de-card de-card__info">
-            <button :class="['btn btn-sm', showTrashed ? 'btn-secondary' : 'btn-outline-secondary']"
-            @click="showTrashed = !showTrashed">
-                Show {{ showTrashed ? 'Active' : 'Trashed' }}
-            </button>
-        </div>
+        <ul class="de-card de-card__navigation">
+            <li class="ms-auto">
+                <button :class="['btn btn-text', showTrashed ? 'active' : '']"
+                @click="showTrashed = !showTrashed">
+                    Show {{ showTrashed ? 'Active' : 'Trashed' }}
+                </button>
+            </li>
+        </ul>
 
         <div class="de-card de-card__table">
             <DeDatatable :header="tableHead" :data="showTrashed ? trashedData : activeData">
@@ -79,8 +84,6 @@ export default {
             onSubmit,
             setModalRef,
             onEditSelect,
-            onCreate,
-            onEdit,
             onDelete,
             onRestore,
             onPermanent,
@@ -99,8 +102,6 @@ export default {
             onSubmit,
             setModalRef,
             onEditSelect,
-            onCreate,
-            onEdit,
             onDelete,
             onRestore,
             onPermanent,

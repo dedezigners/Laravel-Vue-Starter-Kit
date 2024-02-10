@@ -1,0 +1,101 @@
+.de-card {
+    $p: &;
+    position: relative;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: 0 0 20px 0 rgba($color: $dark-color, $alpha: 0.125);
+    margin-bottom: $padding-y;
+    
+    @media ($desktop-screen) {
+        margin-bottom: calc($padding-y * 1.5);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+        padding: $padding-x calc($padding-y * 0.5);
+        border-left: calc($padding-x / 2) solid $primary-color;
+
+        @media ($desktop-screen) {
+            padding: calc($padding-x * 2) $padding-y;
+        }
+
+        #{$p}--title {
+            color: $black;
+            font-weight: 600;
+        }
+
+        &--desc {
+            color: $light-text;
+        }
+
+        &--b-btm {
+            border-left: 0;
+            border-bottom-left-radius: 0;
+            border-bottom: 1px solid rgba($color: $border-color, $alpha: 1);
+        }
+    }
+
+    &__body {
+        padding: $padding-x calc($padding-y * 0.5);
+        
+        @media ($desktop-screen) {
+            padding: calc($padding-x * 2) $padding-y;
+        }
+    }
+    
+    &__table {
+        padding: 2px;
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+
+        .de-profile {
+            margin-right: $padding-x;
+        }
+
+        &--content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--info {
+            flex-grow: 1;
+            
+            li {
+                display: flex;
+                align-items: center;
+                color: $light-text;
+                margin-top: calc($default-padding-x / 2);
+                
+                @media ($desktop-screen) {
+                    display: inline-flex;
+                    margin-right: $padding-x;
+                }
+
+                .svg-inline--fa {
+                    margin-right: 5px;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    &__navigation {
+        display: flex;
+        box-shadow: none;
+        background-color: transparent;
+    }
+}

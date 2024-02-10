@@ -18,6 +18,8 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
         const data = activeData.find((c: { id: number }) => c.id === id);
         modalButtonRef.value?.click();
         editData.value = data;
+        console.log(data);
+        
     }
 
     const onDelete = (id: number) => {

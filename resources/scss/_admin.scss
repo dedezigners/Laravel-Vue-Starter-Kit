@@ -15,10 +15,10 @@
         display: flex;
         flex-direction: column;
         height: calc(100vh - $desktop-header-height);
+        margin-top: $desktop-header-height;
         @include transition;
         
         @media ($desktop-screen) {
-            margin-top: $desktop-header-height;
             margin-left: $desktop-sidebar-width;
         }
 
@@ -28,15 +28,18 @@
     }
 
     &__content {
-        padding: $padding-x calc($padding-y * 1.5);
+        padding: $padding-x calc($padding-y * 0.5);
         flex-grow: 1;
-    }
 
-    // Components
-    @import 'components/admin/header';
-    @import 'components/admin/sidebar';
-    @import 'components/admin/footer';
-    @import 'components/admin/breadcrumb';
-    @import 'components/admin/card';
-    @import 'components/admin/datatable';
+        @media ($desktop-screen) {
+            padding: $padding-x calc($padding-y * 1.5);
+        }
+    }
 }
+
+// Components
+@import 'components/admin/header';
+@import 'components/admin/sidebar';
+@import 'components/admin/footer';
+@import 'components/admin/breadcrumb';
+@import 'components/admin/datatable';

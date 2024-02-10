@@ -40,12 +40,17 @@
 
         .svg-inline--fa {
             margin-left: 0;
+            font-size: 1rem;
         }
 
         &.btn-sm {
             width: 32px;
             height: 32px;
             border-radius: 2px;
+
+            .svg-inline--fa {
+                font-size: 0.8rem;
+            }
         }
     }
 

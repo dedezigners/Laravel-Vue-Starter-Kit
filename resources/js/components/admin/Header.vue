@@ -28,10 +28,10 @@
                             </div>
                             <div class="dropdown-item dropdown-item--seprator"></div>
                             <div class="dropdown-item">
-                                <Link href="/admin/profile" class="dropdown-item--link">My Profile</Link>
+                                <Link href="/admin/profile/overview" class="dropdown-item--link">My Profile</Link>
                             </div>
                             <div class="dropdown-item">
-                                <Link href="/admin/change-password" class="dropdown-item--link">Change Password</Link>
+                                <Link href="/admin/profile/change-password" class="dropdown-item--link">Change Password</Link>
                             </div>
                             <div class="dropdown-item dropdown-item--seprator"></div>
                             <div class="dropdown-item">

@@ -24,18 +24,6 @@ const menu: Menu[] = [
                 icon: 'user-group',
                 is_active: false,
             },
-            {
-                name: "Roles",
-                route: '/users',
-                icon: 'user-gear',
-                is_active: false,
-            },
-            {
-                name: "Permissions",
-                route: '/users',
-                icon: 'user-lock',
-                is_active: false,
-            },
         ]
     },
     {

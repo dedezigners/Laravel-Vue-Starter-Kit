@@ -34,20 +34,20 @@ export interface Resource<T> {
 
 export interface BlogCategory {
     id: number,
-    icon: string | null,
-    name: string,
-    slug: string,
-    parent: number | null,
-    desc: string | null,
-    created_at: string,
+    icon?: string,
+    name?: string,
+    slug?: string,
+    parent?: number | null,
+    desc?: string | null,
+    created_at?: string,
 }
 
 export interface BlogTag {
     id: number,
-    name: string,
-    slug: string,
-    desc: string | null,
-    created_at: string,
+    name?: string,
+    slug?: string,
+    desc?: string | null,
+    created_at?: string,
 }
 
 export interface Post {
@@ -60,4 +60,18 @@ export interface Post {
     tag_ids?: [],
     excerpt?: string | null,
     content?: string,
+}
+
+export interface User {
+    id?: number,
+    image?: string | object,
+    p_image?: string,
+    thumb?: string,
+    name?: string,
+    email?: string,
+    username?: string,
+    password?: string,
+    role?: string,
+    location?: string,
+    phone?: string,
 }

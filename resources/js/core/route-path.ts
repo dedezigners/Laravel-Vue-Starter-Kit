@@ -4,4 +4,5 @@ export class RoutePath {
         tags: '/admin/blog/tags',
         posts: '/admin/blog/posts',
     };
+    static users = '/admin/users';
 }

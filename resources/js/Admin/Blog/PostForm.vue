@@ -1,7 +1,10 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <div class="de-card de-card__header">
-            <h3 class="de-card__header--title">{{ post ? 'Edit ' : 'Create ' }}Post</h3>
+            <h3 class="de-card--title">
+                <span class="me-1">{{ post ? 'Edit' : 'Create' }}</span>
+                <span>Post</span>
+            </h3>
         </div>
 
         <div class="de-card de-card__body">
