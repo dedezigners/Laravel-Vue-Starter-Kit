@@ -1,9 +1,9 @@
 <template>
-    <footer class="de-footer">
+    <footer class="footer">
         <div class="container">
-            <div class="de-footer-copyright">
+            <div class="footer-copyright">
                 <p>{{ currentYear }} &copy; <a href="http://dedezigners.com" target="_blank">DeDezigners</a></p>
-                <ul class="de-footer--list">
+                <ul class="footer--list">
                     <li><a href="http://dedezigners.com/about" target="_blank">About Us</a></li>
                 </ul>
             </div>

@@ -1,20 +1,20 @@
 <template>
-    <header class="de-header">
+    <header class="header">
         <div class="container">
-            <div class="de-header-inner">
-                <Link class="de-header-brand" href="/">
-                <img class="de-header-brand--logo" src="/assets/images/logo/dede.svg" alt="DeDe">
+            <div class="header-inner">
+                <Link class="header-brand" href="/">
+                <img class="header-brand--logo" src="/assets/images/logo/dede.svg" alt="DeDe">
                 </Link>
-                <nav class="de-header-nav">
-                    <ul class="de-header-nav--list">
-                        <li v-if="!authStore.isAuthenticated" class="de-header-nav--list-item">
-                            <Link class="de-header-nav--link" href="/login">Login</Link>
+                <nav class="header-nav">
+                    <ul class="header-nav--list">
+                        <li v-if="!authStore.isAuthenticated" class="header-nav--list-item">
+                            <Link class="header-nav--link" href="/login">Login</Link>
                         </li>
-                        <li v-if="!authStore.isAuthenticated" class="de-header-nav--list-item">
-                            <Link class="de-header-nav--link" href="/register">Register</Link>
+                        <li v-if="!authStore.isAuthenticated" class="header-nav--list-item">
+                            <Link class="header-nav--link" href="/register">Register</Link>
                         </li>
-                        <li v-if="authStore.isAuthenticated" class="de-header-nav--list-item">
-                            <Link class="de-header-nav--link" href="/logout">Logout</Link>
+                        <li v-if="authStore.isAuthenticated" class="header-nav--list-item">
+                            <Link class="header-nav--link" href="/logout">Logout</Link>
                         </li>
                     </ul>
                 </nav>
