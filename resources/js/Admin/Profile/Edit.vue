@@ -1,6 +1,17 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
         <ProfileHead :user="user.data" type="edit" />
+
+        <div class="de-card">
+            <div class="de-card__header de-card__header--b-btm">
+                <h3 class="de-card--title">Profile Details</h3>
+            </div>
+            <div class="de-card__body">
+                <el-form>
+                    
+                </el-form>
+            </div>
+        </div>
     </admin-layout>
 </template>
 

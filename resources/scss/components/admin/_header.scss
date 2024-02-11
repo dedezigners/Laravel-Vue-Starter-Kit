@@ -13,9 +13,12 @@
         width: calc(100vw - $desktop-sidebar-width);
         margin-left: $desktop-sidebar-width;
     }
-
+    
     &--lg {
-        margin-left: 60px;
+        @media ($desktop-screen) {
+            width: calc(100vw - 60px);
+            margin-left: 60px;
+        }
     }
 
     &--brand {

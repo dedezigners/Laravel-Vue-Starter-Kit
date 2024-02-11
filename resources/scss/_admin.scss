@@ -23,7 +23,9 @@
         }
 
         &--lg {
-            margin-left: 60px;
+            @media ($desktop-screen) {
+                margin-left: 60px;
+            }
         }
     }
 

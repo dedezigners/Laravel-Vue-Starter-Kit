@@ -49,6 +49,31 @@
         @media ($desktop-screen) {
             padding: calc($padding-x * 2) $padding-y;
         }
+
+        .profile-detail {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: $default-padding-x;
+
+            @media ($desktop-screen) {
+                flex-direction: row;
+            }
+
+            &__title {
+                color: $light-text;
+                line-height: 24px;
+
+                @media ($desktop-screen) {
+                    min-width: 250px;
+                }
+            }
+            
+            &__desc {
+                color: $text-color;
+                line-height: 24px;
+                font-weight: 500;
+            }
+        }
     }
     
     &__table {

@@ -7,11 +7,30 @@
                 <h3 class="de-card--title">Profile Details</h3>
             </div>
             <div class="de-card__body">
-                <ul class="list">
-                    <li>
-                        .de-detail
-                    </li>
-                </ul>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Name</div>
+                    <div class="profile-detail__desc">{{ user.data.name }}</div>
+                </div>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Email</div>
+                    <div class="profile-detail__desc">{{ user.data.email }}</div>
+                </div>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Username</div>
+                    <div class="profile-detail__desc">{{ user.data.username }}</div>
+                </div>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Phone</div>
+                    <div class="profile-detail__desc">{{ user.data.phone ?? '&mdash;' }}</div>
+                </div>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Company</div>
+                    <div class="profile-detail__desc">{{ user.data.phone ?? '&mdash;' }}</div>
+                </div>
+                <div class="profile-detail">
+                    <div class="profile-detail__title">Country</div>
+                    <div class="profile-detail__desc">{{ user.data.location ?? '&mdash;' }}</div>
+                </div>
             </div>
         </div>
     </admin-layout>
