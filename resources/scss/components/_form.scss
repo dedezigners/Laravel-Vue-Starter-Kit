@@ -43,15 +43,17 @@ input::placeholder {
         }
 
         &--content {
+            line-height: 12px;
+            
             h6 {
                 font-size: 12px;
-                line-height: 18px;
+                line-height: 18px !important;
                 color: $black;
             }
 
             span {
                 font-size: 10px;
-                line-height: 12px;
+                line-height: 12px !important;
                 color: $light-text;
             }
         }
