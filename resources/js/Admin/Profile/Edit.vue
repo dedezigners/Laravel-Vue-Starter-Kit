@@ -1,6 +1,6 @@
 <template>
     <admin-layout :title="title" :breadcrumbs="breadcrumbs">
-        <ProfileHead :user="user.data" type="edit" />
+        <ProfileHead :user="user.data" type="edit" :countries="countries" />
 
         <div class="de-card">
             <div class="de-card__header de-card__header--b-btm">

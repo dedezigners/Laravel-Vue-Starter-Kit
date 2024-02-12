@@ -19,7 +19,7 @@
                     </li>
                     <li v-if="user.country">
                         <font-awesome-icon icon="location-dot" />
-                        <span>{{ user.country }}</span>
+                        <span>{{ getCountryName(user.country) }}</span>
                     </li>
                 </ul>
             </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { User } from '@/core/type';
+import { Country, User } from '@/core/type';
 import { PropType } from 'vue';
 
 export default {
@@ -47,10 +47,18 @@ export default {
         type: {
             type: String as PropType<"overview" | "edit" | "change-password">,
             default: "overview"
-        }
+        },
+        countries: Array as PropType<Country[]>,
     },
     setup: (props) => {
-        console.log();
+        const getCountryName = (countryCode: string) => {
+            const userCountry: Country | undefined = props.countries?.find(c => c.code === countryCode);
+            return userCountry?.name;
+        }
+
+        return {
+            getCountryName,
+        }
         
     }
 }
