@@ -32,6 +32,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $data = $request->only('name', 'slug', 'parent', 'desc');
+        if ($data['parent'] === $category->id) $data['parent'] = null;
         $category->update($data);
         return new CategoryResource($category);
     }
