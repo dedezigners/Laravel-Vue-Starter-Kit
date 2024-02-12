@@ -16,8 +16,8 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'preview' => "/storage/users/{$this->image}",
-            'thumb' => "/storage/users/thumb/{$this->image}",
+            'preview' => $this->image ?  "/storage/users/{$this->image}" : null,
+            'thumb' => $this->image ?  "/storage/users/thumb/{$this->image}" : null,
             'name' => $this->name,
             'email' => $this->email,
             'username' => $this->username,

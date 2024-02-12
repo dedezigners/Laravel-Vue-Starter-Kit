@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
     Route::post('upload-image', [FrontendController::class, 'uploadImage']);
 
-    Route::put('profile/update', [ProfileController::class, 'updateProfile']);
+    Route::put('profile/update/{user}', [ProfileController::class, 'updateProfile']);
     Route::put('profile/change-password', [ProfileController::class, 'updatePassword']);
     
     // Admin Routes

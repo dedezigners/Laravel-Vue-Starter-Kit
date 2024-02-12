@@ -84,9 +84,8 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any, mod
             loading.value = true;
             errors.value = [];
 
-            const routeKeyValue = modalPrimaryKey ? editData.value[modalPrimaryKey] : editData.value.id;
             res = isEdit ?
-            await axios.put(`${endPoint}/${routeKeyValue}`, formData) :
+            await axios.put(`${endPoint}/${modalPrimaryKey ? editData.value[modalPrimaryKey] : editData.value.id}`, formData) :
             await axios.post(`${endPoint}`, formData);
             // console.log(res.data.data);
 

@@ -36,7 +36,8 @@
                             </el-select>
                         </el-form-item>
                         
-                        <button type="submit" :class="['btn btn-lg btn-primary de-submit', loading ? 'de-submit--loading' : '']">
+                        <button type="submit" :disabled="loading"
+                        :class="['btn btn-lg btn-primary de-form__submit', loading ? 'de-form__submit--loading' : '']">
                             <span>{{ data ? 'Edit' : 'Create' }} User</span>
                             <font-awesome-icon :icon="loading ? 'spinner' : 'arrow-right-long'" />
                         </button>

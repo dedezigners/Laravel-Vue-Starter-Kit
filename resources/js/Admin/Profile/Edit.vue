@@ -75,7 +75,7 @@ export default {
             loading.value = true;
             errors.value = [];
             
-            axios.put(`/profile/update`, formData.value).then(res => {
+            axios.put(`/profile/update/${props.user.data.username}`, formData.value).then(res => {
                 loading.value = false;
             }).catch(error => {
                 console.error(error.message);

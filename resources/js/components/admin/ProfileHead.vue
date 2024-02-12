@@ -3,7 +3,7 @@
         <div class="de-card__profile">
             <figure class="de-profile de-profile--xl">
                 <img v-if="user.preview" :src="user?.preview" :alt="user.name" class="de-profile--image">
-                <span v-else class="de-profile--name">{{ user.name?.substring(0, 1) }}</span>
+                <span v-else class="de-profile--name">{{ user.name?.substring(0, 2) }}</span>
             </figure>
             <div class="de-card__profile--content">
                 <h4>{{ user.name }}</h4>

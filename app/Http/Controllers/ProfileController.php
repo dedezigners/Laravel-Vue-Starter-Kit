@@ -37,9 +37,8 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function updateProfile(UserRequest $request)
+    public function updateProfile(UserRequest $request, User $user)
     {
-        $user = User::find(auth()->id());
         $data = $request->only('image', 'name', 'email', 'username', 'role', 'phone', 'company', 'country');
         $user->update($data);
 
