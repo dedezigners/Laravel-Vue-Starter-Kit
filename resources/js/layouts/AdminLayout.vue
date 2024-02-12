@@ -1,12 +1,12 @@
 <template>
     <div :class="['de-admin']">
         <div v-if="showSidebar" :class="showSidebar ? 'de-admin--overlay' : ''" @click.self="showSidebar = false"></div>
-        <DeHeader :class="smallSidebar ? 'de-header--lg' : ''" @show-sidebar="showSidebar = true" />
+        <DeHeader :class="authStore.isSmallSidebar ? 'de-header--lg' : ''" @show-sidebar="showSidebar = true" />
 
         <div class="de-admin__wrapper">
-            <DeSidebar :show="showSidebar" :small="smallSidebar" @on-toogle="smallSidebar = !smallSidebar" />
+            <DeSidebar :show="showSidebar" :small="authStore.isSmallSidebar" @on-toogle="authStore.sidebarToogle" />
             
-            <div :class="['de-admin__main', smallSidebar ? 'de-admin__main--lg' : '']">
+            <div :class="['de-admin__main', authStore.isSmallSidebar ? 'de-admin__main--lg' : '']">
                 <DeBreadcrumb :title="title" :breadcrumbs="breadcrumbs" />
                 <div class="de-admin__content">
                     <slot></slot>
@@ -40,13 +40,11 @@ export default {
     setup: () => {
         const authStore = useAuthStore();
         const showSidebar = ref(false);
-        // TODOS: smallSidebar should worked with state properties for no behaviour change on page load!
-        const smallSidebar = ref(false);
         authStore.getAuth();
         
         return {
+            authStore,
             showSidebar,
-            smallSidebar,
         }
     }
 }

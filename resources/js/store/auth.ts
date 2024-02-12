@@ -8,6 +8,7 @@ export const useAuthStore = defineStore('auth', () => {
     const loading = ref(true);
     const authenticated = ref(false);
     const authUser = ref<AuthUser | null>(null);
+    const smallSidebar = ref(false);
 
     const setAuth = (auth: any) => {
         authenticated.value = true;
@@ -33,15 +34,20 @@ export const useAuthStore = defineStore('auth', () => {
         body?.classList.remove('de-splash')
     }
 
+    const sidebarToogle = () => smallSidebar.value = !smallSidebar.value;
+
     const isLoading = computed(() => loading.value);
     const isAuthenticated = computed(() => authenticated.value);
     const user = computed(() => authUser.value);
+    const isSmallSidebar = computed(() => smallSidebar.value);
 
     return {
         user,
         isLoading,
+        isSmallSidebar,
         isAuthenticated,
         setAuth,
         getAuth,
+        sidebarToogle,
     }
 });
