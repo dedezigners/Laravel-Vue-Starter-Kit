@@ -93,7 +93,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud(RoutePath.users, props.users?.data, props.trashedUsers?.data);
+        } = useCrud(RoutePath.users, props.users?.data, props.trashedUsers?.data, 'username');
         
 
         return {

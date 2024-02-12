@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { ElMessageBox } from "element-plus";
 import { hideModal } from "./helper";
 
-export const useCrud = (endPoint: string, activeData: any, trashedData: any) => {
+export const useCrud = (endPoint: string, activeData: any, trashedData: any, modalPrimaryKey: string | null = null) => {
     // Datatable
     const modalButtonRef = ref<HTMLElement | null>(null);
     const showTrashed = ref(false);
@@ -34,7 +34,9 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
             }
         ).then(() => {
             const rowIndex = activeData.findIndex((c: { id: number }) => c.id === id);
-            axios.delete(`${endPoint}/${id}`);
+            const routeKeyValue = modalPrimaryKey ? activeData[rowIndex][modalPrimaryKey] : id;
+            
+            axios.delete(`${endPoint}/${routeKeyValue}`);
 
             trashedData.push(activeData[rowIndex]);
             activeData.splice(rowIndex, 1);
@@ -82,8 +84,9 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
             loading.value = true;
             errors.value = [];
 
+            const routeKeyValue = modalPrimaryKey ? editData.value[modalPrimaryKey] : editData.value.id;
             res = isEdit ?
-            await axios.put(`${endPoint}/${editData.value?.id}`, formData) :
+            await axios.put(`${endPoint}/${routeKeyValue}`, formData) :
             await axios.post(`${endPoint}`, formData);
             // console.log(res.data.data);
 
