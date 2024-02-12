@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
         Route::get('profile/overview', [ProfileController::class, 'overview']);
         Route::get('profile/edit', [ProfileController::class, 'edit']);
         Route::get('profile/change-password', [ProfileController::class, 'changePassword']);
+        Route::put('profile/update/{user}', [ProfileController::class, 'updateProfile']);
+        Route::put('profile/change-password', [ProfileController::class, 'updatePassword']);
 
         Route::apiResource('users', UserController::class)->except('show');
         Route::put('users/{id}/restore', [UserController::class, 'restore']);

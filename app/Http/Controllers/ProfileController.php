@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -31,5 +35,38 @@ class ProfileController extends Controller
             'title' => "Change Password",
             'user' => new UserResource(auth()->user()),
         ]);
+    }
+
+    public function updateProfile(UserRequest $request, User $user)
+    {
+        if (auth()->id() === $user->id) {
+            $data = $request->only('image', 'name', 'email', 'username', 'role', 'phone', 'company', 'country');
+            $user->update($data);
+    
+            return new UserResource($user);
+        }
+
+        return response()->json(['message' => "You don't have permsision to access this!"], 400);
+    }
+    
+    public function updatePassword(Request $request, User $user)
+    {
+        $request->validate([
+            'current_password' => ['required'],
+            'password' => ['required', 'confirmed', Password::default()],
+        ]);
+
+        if (auth()->id() === $user->id) {
+            if (Hash::check($request->current_password, $user->password)) {
+                $user->password = $request->password;
+                $user->save();
+
+                return response()->json(['message' => "Password Changed successfully!"]);
+            }
+
+            return response()->json(['message' => "Invalid Old password!"], 400);
+        }
+
+        return response()->json(['message' => "You don't have permsision to access this!"], 400);
     }
 }

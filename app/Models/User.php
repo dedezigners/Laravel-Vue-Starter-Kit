@@ -31,6 +31,7 @@ class User extends Authenticatable
         'phone',
         'company',
         'country',
+        'image',
         'last_login',
         'last_login_ip',
     ];
@@ -55,6 +56,11 @@ class User extends Authenticatable
         'last_login' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 
     // Blogs
     public function posts()

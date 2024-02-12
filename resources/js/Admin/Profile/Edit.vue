@@ -69,24 +69,21 @@ export default {
     },
     setup: (props) => {
         const loading = ref(false);
-        const formData = ref<User>(props.user.data);
+        const formData = ref<User>({...props.user.data});
         const errors = ref<any>([]);
 
         const onSubmit = () => {
             loading.value = true;
             errors.value = [];
-
-            console.log(formData.value);
             
-            axios.put(`${RoutePath.users}/${props.user.data.id}`, formData.value).then(res => {
-                console.log(res.data.data);
+            axios.put(`/admin/profile/update/${props.user.data.username}`, formData.value).then(res => {
                 loading.value = false;
             }).catch(error => {
                 console.error(error.message);
                 console.error(error.response.data);
                 errors.value = error.response.data.errors ?? [];
                 loading.value = false;
-            }); 
+            });
         }
         
         return {

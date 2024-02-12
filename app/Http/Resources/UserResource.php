@@ -16,14 +16,14 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'preview' => $this->image,
-            'thumb' => $this->thumb,
+            'preview' => "/storage/users/{$this->image}",
+            'thumb' => "/storage/users/thumb/{$this->image}",
             'name' => $this->name,
             'email' => $this->email,
             'username' => $this->username,
             'role' => $this->role,
             'phone' => $this->phone,
-            'company' => $this->compnay,
+            'company' => $this->company,
             'country' => $this->country,
         ];
     }
