@@ -41,8 +41,13 @@ export const useCrud = (
         ).then(() => {
             const rowIndex = activeData.findIndex((c: { id: number }) => c.id === id);
             const routeKeyValue = modalPrimaryKey ? activeData[rowIndex][modalPrimaryKey] : id;
-            
             axios.delete(`${endPoint}/${routeKeyValue}`);
+
+            ElNotification({
+                type: 'success',
+                title: 'Deleted!',
+                message: `${modal ? `Your ${modal} has` : `You have `} successully deleted!`
+            });
 
             trashedData.push(activeData[rowIndex]);
             activeData.splice(rowIndex, 1);
@@ -52,6 +57,12 @@ export const useCrud = (
     const onRestore = (id: number) => {
         const rowIndex = trashedData.findIndex((c: { id: number }) => c.id === id);
         axios.put(`${endPoint}/${id}/restore`);
+
+        ElNotification({
+            type: 'success',
+            title: 'Restored',
+            message: `${modal ? `Your ${modal} has` : `You have `} successully restored!`
+        });
 
         activeData.unshift(trashedData[rowIndex]);
         trashedData.splice(rowIndex, 1);
@@ -71,6 +82,12 @@ export const useCrud = (
         ).then(() => {
             const rowIndex = trashedData.findIndex( (c: {id: number}) => c.id === id);
             axios.delete(`${endPoint}/${id}/permanent`);
+
+            ElNotification({
+                type: 'success',
+                title: 'Permanet Deleted!',
+                message: `${modal ? `Your ${modal} has` : `You have `} successully deleted!`
+            });
 
             trashedData.splice(rowIndex, 1);
         }).catch(() => {});
