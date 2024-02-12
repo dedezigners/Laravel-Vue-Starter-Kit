@@ -20,6 +20,7 @@ class ProfileController extends Controller
     {
         return Inertia::render("Admin/Profile/Edit", [
             'title' => "Profile Edit",
+            'countries' => config('dede.countries'),
             'user' => new UserResource(auth()->user()),
         ]);
     }

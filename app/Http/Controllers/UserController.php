@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-        $data = $request->only('image', 'name', 'email', 'username', 'role',);
+        $data = $request->only('image', 'name', 'email', 'username', 'role', 'phone', 'company', 'country');
         $user->update($data);
 
         return new UserResource($user);

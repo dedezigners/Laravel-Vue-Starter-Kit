@@ -1,31 +1,62 @@
-.el-form-item {
-    .el-form-item__label {
-        color: $black;
-        margin-bottom: 4px !important;
-    }
+.el {
+    $el: &;
 
-    .el-input__wrapper,
-    .el-select__wrapper,
-    .el-textarea__inner {
-        border-radius: $form-radius;
-        padding: $default-padding-x $default-padding-y;
-        box-shadow: 0 0 0 1px $form-border-color inset;
-        height: auto;
-    }
-
-    .el-input__wrapper > .el-input__inner {
-        line-height: 24px;
-        height: 24px;
-    }
-
-    .el-select__wrapper {
-        .el-select__selection {
-            min-height: 24px;
+    &-form {
+        #{$el}-input {
+            &__wrapper {
+                border-radius: $form-radius;
+                padding: $default-padding-x $default-padding-y;
+                box-shadow: 0 0 0 1px $form-border-color inset;
+                height: auto;
+            }
+        }
+        #{$el}-select {
+            &__wrapper {
+                border-radius: $form-radius;
+                padding: $default-padding-x $default-padding-y;
+                box-shadow: 0 0 0 1px $form-border-color inset;
+                height: auto;
+            }
+        }
+        #{$el}-textarea {
+            &__inner {
+                border-radius: $form-radius;
+                padding: $default-padding-x $default-padding-y;
+                box-shadow: 0 0 0 1px $form-border-color inset;
+                height: auto;
+            }
+        }
+        &-item {
+            &__label {
+                color: $black;
+                margin-bottom: 4px !important;
+            }
             
-            .el-select__selected-item span {
-                display: block;
+            #{$el}-input__wrapper,
+            #{$el}-select__wrapper,
+            #{$el}-textarea__inner {
+                border-radius: $form-radius;
+                padding: $default-padding-x $default-padding-y;
+                box-shadow: 0 0 0 1px $form-border-color inset;
+                height: auto;
+            }
+            
+            #{$el}-input__wrapper > #{$el}-input__in
+            {
                 line-height: 24px;
                 height: 24px;
+            }
+            
+            #{$el}-select__wrapper {
+                .el-select__selection {
+                    min-height: 24px;
+                    
+                    .el-select__selected-item span {
+                        display: block;
+                        line-height: 24px;
+                        height: 24px;
+                    }
+                }
             }
         }
     }

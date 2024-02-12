@@ -19,7 +19,6 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
         modalButtonRef.value?.click();
         editData.value = data;
         console.log(data);
-        
     }
 
     const onDelete = (id: number) => {
@@ -93,6 +92,7 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any) => 
                 activeData.splice(rowIndex, 1);
                 activeData.unshift(res.data.data);
             } else activeData.unshift(res.data.data);
+            loading.value = false;
             closeModal();
             return true;
             

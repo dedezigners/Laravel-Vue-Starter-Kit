@@ -43,6 +43,9 @@ class UserRequest extends FormRequest
         return array_merge([
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'in:admin,user'],
+            'phone' => ['nullable', 'string'],
+            'company' => ['nullable', 'string'],
+            'country' => ['nullable', 'string'],
         ], $conditionalValidation);
     }
 }

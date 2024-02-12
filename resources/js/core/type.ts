@@ -65,13 +65,19 @@ export interface Post {
 export interface User {
     id?: number,
     image?: string | object,
-    p_image?: string,
+    preview?: string,
     thumb?: string,
     name?: string,
     email?: string,
     username?: string,
     password?: string,
     role?: string,
-    location?: string,
     phone?: string,
+    company?: string,
+    country?: string,
+}
+
+export interface Country {
+    name: string,
+    code: string,
 }

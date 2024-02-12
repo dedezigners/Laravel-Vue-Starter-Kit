@@ -2,8 +2,8 @@
     <div class="de-card de-card__header">
         <div class="de-card__profile">
             <figure class="de-profile de-profile--xl">
-                <img v-if="user.p_image" :src="user?.p_image" :alt="user.name" class="de-profile--image">
-                <span v-else class="de-profile--name">{{ user.name?.substring(0, 2) }}</span>
+                <img v-if="user.preview" :src="user?.preview" :alt="user.name" class="de-profile--image">
+                <span v-else class="de-profile--name">{{ user.name?.substring(0, 1) }}</span>
             </figure>
             <div class="de-card__profile--content">
                 <h4>{{ user.name }}</h4>
@@ -14,12 +14,12 @@
                         <span>{{ user.username }}</span>
                     </li>
                     <li v-if="user.email">
-                        <font-awesome-icon icon="location-dot" />
+                        <font-awesome-icon icon="envelope" />
                         <span>{{ user.email }}</span>
                     </li>
-                    <li v-if="user.location">
-                        <font-awesome-icon icon="location" />
-                        <span>{{ user.location }}</span>
+                    <li v-if="user.country">
+                        <font-awesome-icon icon="location-dot" />
+                        <span>{{ user.country }}</span>
                     </li>
                 </ul>
             </div>
