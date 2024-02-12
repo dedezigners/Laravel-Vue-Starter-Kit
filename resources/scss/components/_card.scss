@@ -123,4 +123,39 @@
         box-shadow: none;
         background-color: transparent;
     }
+
+    &__flush {
+        padding: 30px;
+        display: flex;
+        gap: 20px;
+        &:last-child {
+            margin-bottom: $padding-y;
+        }
+    
+        @media ($desktop-screen) {
+            &:last-child {
+                margin-bottom: calc($padding-y * 1.5);
+            }
+        }
+
+        .svg-inline--fa {
+            font-size: 1.8rem;
+            background-color: $bg-light;
+            padding: calc($default-padding-x * 2);
+            border-radius: $border-radius;
+            color: $white;
+        }
+
+        &--info {
+            display: flex;
+            flex-direction: column;
+
+            h4 {
+                order: 1;
+            }
+            h6 {
+                order: 2;
+            }
+        }
+    }
 }
