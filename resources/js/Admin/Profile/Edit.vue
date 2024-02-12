@@ -53,7 +53,6 @@ import { PropType, ref } from 'vue';
 import ProfileHead from '@/components/admin/ProfileHead.vue';
 import FormUpload from '@/components/FormUpload.vue';
 import axios from 'axios';
-import { RoutePath } from '@/core/route-path';
 
 export default {
     name: 'ProfileEdit',
@@ -76,7 +75,7 @@ export default {
             loading.value = true;
             errors.value = [];
             
-            axios.put(`/admin/profile/update/${props.user.data.username}`, formData.value).then(res => {
+            axios.put(`/profile/update`, formData.value).then(res => {
                 loading.value = false;
             }).catch(error => {
                 console.error(error.message);

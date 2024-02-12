@@ -37,36 +37,31 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function updateProfile(UserRequest $request, User $user)
+    public function updateProfile(UserRequest $request)
     {
-        if (auth()->id() === $user->id) {
-            $data = $request->only('image', 'name', 'email', 'username', 'role', 'phone', 'company', 'country');
-            $user->update($data);
-    
-            return new UserResource($user);
-        }
+        $user = User::find(auth()->id());
+        $data = $request->only('image', 'name', 'email', 'username', 'role', 'phone', 'company', 'country');
+        $user->update($data);
 
-        return response()->json(['message' => "You don't have permsision to access this!"], 400);
+        return new UserResource($user);
     }
     
-    public function updatePassword(Request $request, User $user)
+    public function updatePassword(Request $request)
     {
         $request->validate([
             'current_password' => ['required'],
             'password' => ['required', 'confirmed', Password::default()],
         ]);
 
-        if (auth()->id() === $user->id) {
-            if (Hash::check($request->current_password, $user->password)) {
-                $user->password = $request->password;
-                $user->save();
+        $user = User::find(auth()->id());
 
-                return response()->json(['message' => "Password Changed successfully!"]);
-            }
+        if (Hash::check($request->current_password, $user->password)) {
+            $user->password = $request->password;
+            $user->save();
 
-            return response()->json(['message' => "Invalid Old password!"], 400);
+            return response()->json(['message' => "Password Changed successfully!"]);
         }
 
-        return response()->json(['message' => "You don't have permsision to access this!"], 400);
+        return response()->json(['message' => "Invalid Old password!"], 400);
     }
 }

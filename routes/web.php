@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::any('logout', [AuthController::class, 'destroy'])->name('logout');
     Route::get('dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
     Route::post('upload-image', [FrontendController::class, 'uploadImage']);
+
+    Route::put('profile/update', [ProfileController::class, 'updateProfile']);
+    Route::put('profile/change-password', [ProfileController::class, 'updatePassword']);
     
     // Admin Routes
     Route::redirect('admin', 'admin/dashboard');
@@ -48,8 +51,6 @@ Route::middleware('auth')->group(function () {
         Route::get('profile/overview', [ProfileController::class, 'overview']);
         Route::get('profile/edit', [ProfileController::class, 'edit']);
         Route::get('profile/change-password', [ProfileController::class, 'changePassword']);
-        Route::put('profile/update/{user}', [ProfileController::class, 'updateProfile']);
-        Route::put('profile/change-password', [ProfileController::class, 'updatePassword']);
 
         Route::apiResource('users', UserController::class)->except('show');
         Route::put('users/{id}/restore', [UserController::class, 'restore']);
