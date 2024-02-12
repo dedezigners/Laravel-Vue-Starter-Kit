@@ -89,7 +89,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud(RoutePath.blog.categories, props.categories?.data, props.trashedCategories?.data);
+        } = useCrud(RoutePath.blog.categories, props.categories?.data, props.trashedCategories?.data, "category");
 
         return {
             loading,

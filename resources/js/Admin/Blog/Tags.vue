@@ -87,7 +87,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud(RoutePath.blog.tags, props.tags?.data, props.trashedTags?.data);
+        } = useCrud(RoutePath.blog.tags, props.tags?.data, props.trashedTags?.data, "tag");
 
         return {
             loading,

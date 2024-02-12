@@ -35,6 +35,7 @@ import { PropType, ref } from 'vue';
 import ProfileHead from '@/components/admin/ProfileHead.vue';
 import axios from 'axios';
 import { clearForm } from '@/core/helper';
+import { ElNotification } from 'element-plus';
 
 export default {
     name: 'ChangePassword',
@@ -62,6 +63,11 @@ export default {
             
             axios.put(`/profile/change-password`, formData.value).then(res => {
                 loading.value = false;
+                ElNotification({
+                    type: 'success',
+                    title: 'Hooray!',
+                    message: 'You password has successfully changed, please used your new password for login next time!',
+                });
                 formData.value = clearForm(formData.value);
             }).catch(error => {
                 console.error(error.message);

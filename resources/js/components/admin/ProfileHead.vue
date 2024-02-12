@@ -17,10 +17,6 @@
                         <font-awesome-icon icon="envelope" />
                         <span>{{ user.email }}</span>
                     </li>
-                    <li v-if="user.country">
-                        <font-awesome-icon icon="location-dot" />
-                        <span>{{ getCountryName(user.country) }}</span>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -50,16 +46,6 @@ export default {
         },
         countries: Array as PropType<Country[]>,
     },
-    setup: (props) => {
-        const getCountryName = (countryCode: string) => {
-            const userCountry: Country | undefined = props.countries?.find(c => c.code === countryCode);
-            return userCountry?.name;
-        }
-
-        return {
-            getCountryName,
-        }
-        
-    }
+    setup: (props) => {}
 }
 </script>

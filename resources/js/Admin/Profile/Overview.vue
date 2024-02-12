@@ -29,7 +29,7 @@
                 </div>
                 <div class="profile-detail">
                     <div class="profile-detail__title">Country</div>
-                    <div class="profile-detail__desc">{{ user.data.location ?? '&mdash;' }}</div>
+                    <div class="profile-detail__desc">{{ user.data.country ? getCountryName(user.data.country) : '&mdash;' }}</div>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { Resource, User } from '@/core/type';
+import { Country, Resource, User } from '@/core/type';
 import { PropType } from 'vue';
 import ProfileHead from '@/components/admin/ProfileHead.vue';
 
@@ -47,11 +47,21 @@ export default {
     props: {
         title: String,
         breadcrumbs: Array as PropType<String[]>,
+        countries: Array as PropType<Country[]>,
         user: {
             type: Object as PropType<Resource<User>>,
             required: true,
         },
     },
-    setup: (props) => {}
+    setup: (props) => {
+        const getCountryName = (countryCode: string) => {
+            const userCountry: Country | undefined = props.countries?.find(c => c.code === countryCode);
+            return userCountry?.name;
+        }
+
+        return {
+            getCountryName,
+        }
+    }
 }
 </script>

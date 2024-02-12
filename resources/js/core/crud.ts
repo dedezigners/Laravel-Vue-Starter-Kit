@@ -1,9 +1,15 @@
 import axios from "axios";
 import { ref } from "vue";
-import { ElMessageBox } from "element-plus";
+import { ElMessageBox, ElNotification } from "element-plus";
 import { hideModal } from "./helper";
 
-export const useCrud = (endPoint: string, activeData: any, trashedData: any, modalPrimaryKey: string | null = null) => {
+export const useCrud = (
+    endPoint: string,
+    activeData: any,
+    trashedData: any,
+    modal: string | null = null,
+    modalPrimaryKey: string | null = null,
+) => {
     // Datatable
     const modalButtonRef = ref<HTMLElement | null>(null);
     const showTrashed = ref(false);
@@ -96,6 +102,13 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any, mod
             } else activeData.unshift(res.data.data);
             loading.value = false;
             closeModal();
+
+            ElNotification({
+                type: 'success',
+                title: 'All Good!',
+                message: `${modal ? `Your ${modal} has` : `You have `} successully ${isEdit ? 'updated' : 'created'}!`
+            });
+
             return true;
             
         } catch (error: any) {
@@ -103,6 +116,12 @@ export const useCrud = (endPoint: string, activeData: any, trashedData: any, mod
             console.error(error.response.data);
             errors.value = error.response.data.errors ?? [];
             loading.value = false;
+
+            ElNotification({
+                type: 'error',
+                title: 'Ooopps!',
+                message: error.response.data.message ?? "No Message Found!",
+            });
 
             return false;
         }

@@ -85,7 +85,7 @@ export default {
             onDelete,
             onRestore,
             onPermanent,
-        } = useCrud(RoutePath.blog.posts, props.posts?.data, props.trashedPosts?.data);
+        } = useCrud(RoutePath.blog.posts, props.posts?.data, props.trashedPosts?.data, "post");
 
         return {
             activeData,

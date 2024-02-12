@@ -16,6 +16,7 @@ class ProfileController extends Controller
     {
         return Inertia::render("Admin/Profile/Overview", [
             'title' => "Profile Overview",
+            'countries' => config('dede.countries'),
             'user' => new UserResource(auth()->user()),
         ]);
     }

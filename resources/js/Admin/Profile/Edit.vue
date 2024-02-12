@@ -53,6 +53,7 @@ import { PropType, ref } from 'vue';
 import ProfileHead from '@/components/admin/ProfileHead.vue';
 import FormUpload from '@/components/FormUpload.vue';
 import axios from 'axios';
+import { ElNotification } from 'element-plus';
 
 export default {
     name: 'ProfileEdit',
@@ -76,10 +77,20 @@ export default {
             errors.value = [];
             
             axios.put(`/profile/update/${props.user.data.username}`, formData.value).then(res => {
+                ElNotification({
+                    type: 'success',
+                    title: 'Hooray!',
+                    message: 'You have successfully updated your profile!',
+                });
                 loading.value = false;
             }).catch(error => {
                 console.error(error.message);
                 console.error(error.response.data);
+                ElNotification({
+                    type: 'error',
+                    title: 'Ooopps!',
+                    message: error.response.data.message ?? "No Message Found!",
+                });
                 errors.value = error.response.data.errors ?? [];
                 loading.value = false;
             });
