@@ -152,6 +152,12 @@
         .btn--lg { display: flex; }
     }
 
+    &--sm {
+        #{$ds}__footer {
+            padding: 10px 10px;
+        }
+    }
+
     // TODOS: fixed grand parent selector with #{$ds}
     @media ($desktop-screen) {
         &--sm {
