@@ -4,7 +4,7 @@
         <DeHeader :class="authStore.isSmallSidebar ? 'de-header--lg' : ''" @show-sidebar="showSidebar = true" />
 
         <div class="de-admin__wrapper">
-            <DeSidebar :show="showSidebar" :small="authStore.isSmallSidebar" @on-toogle="authStore.sidebarToogle" />
+            <DeSidebar :show="showSidebar" :tiny-sidebar="authStore.isSmallSidebar" @on-toogle="authStore.sidebarToogle" />
             
             <div :class="['de-admin__main', authStore.isSmallSidebar ? 'de-admin__main--lg' : '']">
                 <DeBreadcrumb :title="title" :breadcrumbs="breadcrumbs" />

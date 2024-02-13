@@ -149,7 +149,7 @@
         padding: 10px 12px;
 
         .btn--sm { display: none; }
-        .btn--lg { display: block; }
+        .btn--lg { display: flex; }
     }
 
     // TODOS: fixed grand parent selector with #{$ds}
@@ -171,7 +171,7 @@
 
             .de-sidebar__footer {
                 .btn--lg { display: none; }
-                .btn--sm { display: block; }
+                .btn--sm { display: flex; }
             }
 
             .item {

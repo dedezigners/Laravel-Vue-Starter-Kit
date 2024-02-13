@@ -1,7 +1,7 @@
 <template>
     <div :class="[
         'de-sidebar',
-        small ? 'de-sidebar--sm' : '',
+        tinySidebar ? 'de-sidebar--sm' : '',
         show ? 'active' : '',
     ]">
         <div class="de-sidebar__toggle" @click="$emit('on-toogle')">
@@ -17,7 +17,7 @@
             <ul class="de-sidebar__menu" v-for="(item, i) in sidebarMenu" :key="i">
                 <li v-if="item.heading" class="de-sidebar__menu--heading">{{ item.heading }}</li>
                 <li v-for="(menu, j) in item.pages" :key="j" class="de-sidebar__menu--item">
-                    <MenuItem :menu="menu" :prefix="item.prefix" :active="urlPath === item.prefix + menu.route" />
+                    <MenuItem :menu="menu" :prefix="item.prefix" :active="urlPath === item.prefix + menu.route" :tiny-sidebar="tinySidebar" />
                 </li>
             </ul>
         </div>
@@ -42,14 +42,11 @@ export default {
     name: "DeSidebar",
     components: { MenuItem },
     props: {
+        tinySidebar: Boolean,
         show: {
             type: Boolean,
             required: true,
         },
-        small: {
-            type: Boolean,
-            default: false,
-        }
     },
     emits: ['on-toogle'],
     setup: () => {

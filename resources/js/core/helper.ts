@@ -27,3 +27,11 @@ export const clearForm = (form: Object): Object => {
 
     return nForm;
 }
+
+export const hideTooltip = (e: MouseEvent): void => {
+    const elem = e.currentTarget!;
+    // @ts-ignore
+    let tooltipKey: string = elem.getAttribute('aria-describedby');
+    const tooltipElem = document.getElementById(tooltipKey);
+    tooltipElem?.remove();
+  }
